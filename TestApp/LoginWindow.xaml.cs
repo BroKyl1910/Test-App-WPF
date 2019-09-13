@@ -18,16 +18,14 @@ using System.Windows.Shapes;
 namespace TestApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
 
         TestAppEntities db = new TestAppEntities();
-        BackgroundWorker bw = new BackgroundWorker();
 
-
-        public MainWindow()
+        public LoginWindow()
         {
             InitializeComponent();
         }
@@ -41,7 +39,13 @@ namespace TestApp
             btnLogin.Visibility = Visibility.Hidden;
             prgLoading.Visibility = Visibility.Visible;
 
+            // Background worker used because reading from the database for the first time, especially if it's in the cloud
+            // is really slow
+            BackgroundWorker bw = new BackgroundWorker();
+
+            //Authenticate and return user
             bw.DoWork += (obj, ev) => AuthenticateUser(username, password, out user);
+            //Display error if not found or go to next screen if found
             bw.RunWorkerCompleted += (obj, ev) => OutputAuthentication(user);
 
             bw.RunWorkerAsync();
@@ -50,6 +54,7 @@ namespace TestApp
 
         }
 
+        //Display error if not found or go to next screen if found
         private void OutputAuthentication(User user)
         {
             if (user == null)
@@ -68,6 +73,7 @@ namespace TestApp
 
         }
 
+        //Authenticate and return user
         private void AuthenticateUser(string username, string password, out User user)
         {
             user = db.Users.FirstOrDefault(u => u.Username.ToLower().Equals(username.ToLower()) && u.Password.Equals(password));
@@ -75,7 +81,8 @@ namespace TestApp
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            new RegisterWindow().Show();
+            this.Hide();
         }
     }
 }
