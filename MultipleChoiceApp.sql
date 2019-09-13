@@ -1,0 +1,87 @@
+CREATE DATABASE TestApp;
+go
+
+use TestApp;
+
+-- User
+CREATE TABLE [User](
+	Username VARCHAR(50) NOT NULL PRIMARY KEY,
+	[Password] VARCHAR(60) NOT NULL,
+	FirstName VARCHAR(25) NOT NULL,
+	Surname VARCHAR(25) NOT NULL,
+	UserType INTEGER NOT NULL -- 0 = Student, 1 = Lecturer
+);
+
+-- Module
+CREATE TABLE Module(
+	ModuleID VARCHAR(10) NOT NULL PRIMARY KEY,
+	ModuleName VARCHAR(50) NOT NULL
+);
+
+-- Course
+CREATE TABLE Course(
+	CourseID VARCHAR(10) NOT NULL PRIMARY KEY,
+	CourseName VARCHAR(50) NOT NULL
+);
+
+-- ModuleCourse
+CREATE TABLE ModuleCourse(
+	ModuleCourseID VARCHAR(10) NOT NULL PRIMARY KEY,
+	ModuleID VARCHAR(10) NOT NULL FOREIGN KEY REFERENCES Module(ModuleID),
+	CourseID VARCHAR(10) NOT NULL FOREIGN KEY REFERENCES Course(CourseID)
+);
+
+-- StudentAssignment
+CREATE TABLE StudentAssignment(
+	StudentAssignmentID VARCHAR(10) NOT NULL PRIMARY KEY,
+	Username VARCHAR(50) NOT NULL FOREIGN KEY REFERENCES [User](Username),
+	CourseID VARCHAR(10) NOT NULL FOREIGN KEY REFERENCES Course(CourseID)
+);
+
+-- LecturerAssignment
+CREATE TABLE LecturerAssignment(
+	LecturerAssignmentID VARCHAR(10) NOT NULL PRIMARY KEY,
+	Username VARCHAR(50) NOT NULL FOREIGN KEY REFERENCES [User](Username),
+	ModuleID VARCHAR(10) NOT NULL FOREIGN KEY REFERENCES Module(ModuleID)
+);
+
+-- Test
+CREATE TABLE Test(
+	TestID VARCHAR(10) PRIMARY KEY NOT NULL,
+	Username VARCHAR(50) FOREIGN KEY REFERENCES [User](Username), -- Lecturer who created test
+	ModuleID VARCHAR(10) FOREIGN KEY REFERENCES Module(ModuleID),
+	DueDate DateTime
+);
+
+-- Question
+CREATE TABLE Question(
+	QuestionID VARCHAR(10) NOT NULL PRIMARY KEY,
+	TestID VARCHAR(10) FOREIGN KEY REFERENCES Test(TestID),
+	QuestionText VARCHAR(200) NOT NULL,
+	Answer1 VARCHAR(100) NOT NULL,
+	Answer2 VARCHAR(100) NOT NULL,
+	Answer3 VARCHAR(100) NOT NULL,
+	CorrectAnswer INT NOT NULL
+);
+
+-- Answer
+CREATE TABLE Answer(
+	AnswerID VARCHAR(10) NOT NULL PRIMARY KEY,
+	TestID VARCHAR(10) FOREIGN KEY REFERENCES Test(TestID),
+	QuestionID VARCHAR(10) FOREIGN KEY REFERENCES Question(QuestionID),
+	Username VARCHAR(50) FOREIGN KEY REFERENCES [User](Username),
+	AttemptNumber INTEGER NOT NULL,
+	UserAnswer INT NOT NULL
+);
+
+-- Result
+CREATE TABLE Result(
+	ResultID VARCHAR(10) NOT NULL PRIMARY KEY,
+	TestID VARCHAR(10) FOREIGN KEY REFERENCES Test(TestID),
+	Username VARCHAR(50) FOREIGN KEY REFERENCES [User](Username),
+	AttemptNumber INTEGER NOT NULL,
+	UserResult INT NOT NULL,
+	ResultPercentage DECIMAL NOT NULL
+);
+
+INSERT INTO [User] VALUES ("")

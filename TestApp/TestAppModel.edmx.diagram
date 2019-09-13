@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0984f7eb97144a8f96bdb3688d494ee0" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="TestAppModel.Answer" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.Course" Width="1.5" PointX="0.875" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.LecturerAssignment" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.Module" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.ModuleCourse" Width="1.5" PointX="9" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.Question" Width="1.5" PointX="9.125" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.Result" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.StudentAssignment" Width="1.5" PointX="6.125" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.Test" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.User" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <AssociationConnector Association="TestAppModel.FK__Answer__Question__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__Answer__TestID__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__Answer__Username__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__ModuleCou__Cours__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__StudentAs__Cours__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__LecturerA__Modul__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__LecturerA__Usern__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__ModuleCou__Modul__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__Test__ModuleID__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__Question__TestID__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__Result__TestID__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__Result__Username__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__StudentAs__Usern__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="TestAppModel.FK__Test__Username__48CFD27E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

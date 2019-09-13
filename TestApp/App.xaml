@@ -1,0 +1,27 @@
+﻿<Application x:Class="TestApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TestApp"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                
+            </ResourceDictionary.MergedDictionaries>
+            
+            <!--Base Colours-->
+            <SolidColorBrush x:Key="PrimaryColor" Color="#33000000" />
+            <SolidColorBrush x:Key="AccentBlueColor" Color="#00adb5" />
+            <SolidColorBrush x:Key="AccentGreyColor" Color="#eeeeee" />
+
+            <!--Transparent Colours-->
+            <SolidColorBrush x:Key="PrimaryColorTransparent" Color="#33000000"/>
+            <SolidColorBrush x:Key="Transparent" Color="#00000000"/>
+            <SolidColorBrush x:Key="AccentBlueColorTransparent" Color="#00adb5" Opacity="0.2"/>
+            <SolidColorBrush x:Key="AccentGreyColorTransparent" Color="#eeeeee" Opacity="0.2"/>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
