@@ -76,7 +76,15 @@ namespace TestApp
         //Authenticate and return user
         private void AuthenticateUser(string username, string password, out User user)
         {
-            user = db.Users.FirstOrDefault(u => u.Username.ToLower().Equals(username.ToLower()) && u.Password.Equals(password));
+            user = null;
+            foreach (User u in db.Users)
+            {
+                if (u.Username.ToLower().Equals(username.ToLower()) && BCrypt.CheckPassword(password, u.Password))
+                {
+                    user = u;
+                    break;
+                }
+            }
         }
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)

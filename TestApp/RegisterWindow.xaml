@@ -13,7 +13,7 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+        FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" >
 
     <Grid x:Name="grdMain" Margin="0,0,0,0">
         <TextBlock VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="33,39,624,0" TextAlignment="Center"><Run Text="Register"/></TextBlock>
@@ -22,33 +22,36 @@
                 <Grid Margin="0,0,0,0">
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,108,0,0"><Run Text="First Name"/></TextBlock>
                     <TextBox x:Name="txtFirstName" TabIndex="0" HorizontalAlignment="Left" Height="36" Margin="397,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" FontSize="16"/>
-                    
+
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,200,0,0"><Run Text="Surname"/></TextBlock>
                     <TextBox x:Name="txtSurname" TabIndex="1" HorizontalAlignment="Left" Height="36" Margin="397,186,0,0" VerticalAlignment="Top" Width="337" FontSize="16"/>
-                    
+
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,287,0,0"><Run Text="Username"/></TextBlock>
-                    <TextBox x:Name="txtUsername" TabIndex="0" HorizontalAlignment="Left" Height="36" Margin="397,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" FontSize="16"/>
+                    <TextBox x:Name="txtUsername" TabIndex="2" HorizontalAlignment="Left" Height="36" Margin="397,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" FontSize="16"/>
 
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,378,0,0"><Run Text="Password"/></TextBlock>
-                    <PasswordBox x:Name="txtPassword" TabIndex="1" HorizontalAlignment="Left" Height="36" Margin="397,364,0,0" VerticalAlignment="Top" Width="337" FontSize="16" ToolTip="Password must be at least 8 characters and contain 1 uppercase character, 1 lowercase character and 1 digit"/>
+                    <PasswordBox x:Name="txtPassword" TabIndex="3" HorizontalAlignment="Left" Height="36" Margin="397,364,0,0" VerticalAlignment="Top" Width="337" FontSize="16" ToolTip="Password must be at least 8 characters and contain 1 uppercase character, 1 lowercase character and 1 digit"/>
 
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,455,0,0"><Run Text="Confirm Password"/></TextBlock>
-                    <PasswordBox x:Name="txtConfirmPassword" TabIndex="2" HorizontalAlignment="Left" Height="36" Margin="397,441,0,0" VerticalAlignment="Top" Width="337" FontSize="16"/>
-                    
+                    <PasswordBox x:Name="txtConfirmPassword" TabIndex="4" HorizontalAlignment="Left" Height="36" Margin="397,441,0,0" VerticalAlignment="Top" Width="337" FontSize="16"/>
+
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,548,0,0"><Run Text="User Type"/></TextBlock>
-                    <ComboBox x:Name="cmbUserType" TabIndex="3" HorizontalAlignment="Left" Margin="397,548,0,0" VerticalAlignment="Top" Width="337" Height="36" FontSize="16"/>
+                    <ComboBox x:Name="cmbUserType" TabIndex="5" HorizontalAlignment="Left" Margin="397,548,0,0" VerticalAlignment="Top" Width="337" Height="36" FontSize="16" SelectionChanged="CmbUserType_SelectionChanged"/>
+
+                    <TextBlock x:Name="lblIdentificationType" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,640,0,0"><Run Text="Student Number"/></TextBlock>
+                    <TextBox x:Name="txtIdentification" TabIndex="7" HorizontalAlignment="Left" Height="36" Margin="397,626,0,0" VerticalAlignment="Top" Width="337" FontSize="16"/>
                     
-                    <Button x:Name="btnRegister" Content="Register" HorizontalAlignment="Left" Margin="641,719,0,0" VerticalAlignment="Top" Width="93" Height="43" Background="#33000000" Foreground="White" IsDefault="True"/>
-                    <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="543,719,0,0" VerticalAlignment="Top" Width="93" Height="43" Background="#00000000" Foreground="White"/>
+                    <Button x:Name="btnRegister" Content="Register" HorizontalAlignment="Left" Margin="641,719,0,0" VerticalAlignment="Top" Width="93" Height="43" Background="#33000000" Foreground="White" IsDefault="True" Click="BtnRegister_Click"/>
+                    <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="543,719,0,0" VerticalAlignment="Top" Width="93" Height="43" Background="#00000000" Foreground="White" Click="BtnCancel_Click"/>
                     <ProgressBar x:Name="prgLoading" Style="{DynamicResource MaterialDesignCircularProgressBar}" Foreground="{StaticResource AccentBlueColor}" HorizontalAlignment="Left" Height="4" Margin="670,432,0,0" VerticalAlignment="Top" Width="28" IsIndeterminate="True" Visibility="Hidden"/>
 
                 </Grid>
             </Border>
         </DockPanel>
 
-        <materialDesign:Card x:Name="crdError" HorizontalAlignment="Left" Margin="330,39,0,0" VerticalAlignment="Top" Height="48" Width="436"  Background="{StaticResource PrimaryColorTransparent}" Visibility="Hidden">
+        <materialDesign:Card x:Name="crdError" HorizontalAlignment="Left" Margin="330,39,0,0" VerticalAlignment="Top" Height="48" Width="436"  Background="#33000000" Visibility="Hidden">
             <Grid>
-                <TextBlock Name="lblError" TextAlignment="Center" VerticalAlignment="Center" Text="Error: Please select city from list"></TextBlock>
+                <TextBlock Name="lblError" TextAlignment="Center" VerticalAlignment="Center" Text="Error: Please select city from list" TextWrapping="Wrap" Padding="5"></TextBlock>
             </Grid>
         </materialDesign:Card>
 
