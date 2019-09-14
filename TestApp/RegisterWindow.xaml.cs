@@ -121,6 +121,7 @@ namespace TestApp
         {
             cmbUserType.Items.Add("Student");
             cmbUserType.Items.Add("Lecturer");
+            cmbUserType.SelectedIndex = 0;
             txtFirstName.Focus();
         }
 
@@ -146,6 +147,11 @@ namespace TestApp
         {
             new LoginWindow().Show();
             this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

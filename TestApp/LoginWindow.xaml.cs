@@ -39,12 +39,12 @@ namespace TestApp
             btnLogin.Visibility = Visibility.Hidden;
             prgLoading.Visibility = Visibility.Visible;
 
-            // Background worker used because reading from the database for the first time, especially if it's in the cloud
-            // is really slow
+            // Background worker used because reading from the database for the first time, especially if it's in the cloud is really slow
             BackgroundWorker bw = new BackgroundWorker();
 
             //Authenticate and return user
             bw.DoWork += (obj, ev) => AuthenticateUser(username, password, out user);
+
             //Display error if not found or go to next screen if found
             bw.RunWorkerCompleted += (obj, ev) => OutputAuthentication(user);
 
@@ -91,6 +91,11 @@ namespace TestApp
         {
             new RegisterWindow().Show();
             this.Hide();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

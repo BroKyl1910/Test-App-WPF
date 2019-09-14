@@ -13,7 +13,7 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" >
+        FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" Closed="Window_Closed" >
 
     <Grid x:Name="grdMain" Margin="0,0,0,0">
         <TextBlock VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="33,39,624,0" TextAlignment="Center"><Run Text="Register"/></TextBlock>
@@ -38,7 +38,7 @@
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,548,0,0"><Run Text="User Type"/></TextBlock>
                     <ComboBox x:Name="cmbUserType" TabIndex="5" HorizontalAlignment="Left" Margin="397,548,0,0" VerticalAlignment="Top" Width="337" Height="36" FontSize="16" SelectionChanged="CmbUserType_SelectionChanged"/>
 
-                    <TextBlock x:Name="lblIdentificationType" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,640,0,0"><Run Text="Student Number"/></TextBlock>
+                    <TextBlock x:Name="lblIdentificationType" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,640,0,0"><Run Text="Identification"/></TextBlock>
                     <TextBox x:Name="txtIdentification" TabIndex="7" HorizontalAlignment="Left" Height="36" Margin="397,626,0,0" VerticalAlignment="Top" Width="337" FontSize="16"/>
                     
                     <Button x:Name="btnRegister" Content="Register" HorizontalAlignment="Left" Margin="641,719,0,0" VerticalAlignment="Top" Width="93" Height="43" Background="#33000000" Foreground="White" IsDefault="True" Click="BtnRegister_Click"/>
