@@ -94,8 +94,14 @@
     <Compile Include="Course.cs">
       <DependentUpon>TestAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CreateTestWindow.xaml.cs">
+      <DependentUpon>CreateTestWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LecturerAssignment.cs">
       <DependentUpon>TestAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Module.cs">
       <DependentUpon>TestAppModel.tt</DependentUpon>
@@ -137,6 +143,10 @@
       <DependentUpon>TestAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserType.cs" />
+    <Page Include="CreateTestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -149,6 +159,10 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RegisterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

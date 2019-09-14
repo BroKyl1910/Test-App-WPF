@@ -57,6 +57,9 @@ namespace TestApp
         //Display error if not found or go to next screen if found
         private void OutputAuthentication(User user)
         {
+            prgLoading.Visibility = Visibility.Hidden;
+            btnLogin.Visibility = Visibility.Visible;
+
             if (user == null)
             {
                 crdError.Visibility = Visibility.Visible;
@@ -64,12 +67,20 @@ namespace TestApp
             }
             else
             {
-                crdError.Visibility = Visibility.Visible;
-                lblError.Text = "Ok den.";
+                //Create AppUser so that I can control what data gets passed around, I don't want the user's password being in the object which is passed between windows
+                if(user.UserType == (int)UserType.LECTURER)
+                {
+                    new MainWindow(new AppLecturer(user.UniversityIdentification, user.FirstName, user.Surname, user.Username, UserType.LECTURER)).Show();
+                    this.Hide();
+                }
+                else
+                {
+                    new MainWindow(new AppStudent(user.UniversityIdentification, user.FirstName, user.Surname, user.Username, UserType.STUDENT)).Show();
+                    this.Hide();
+                }
             }
 
-            prgLoading.Visibility = Visibility.Hidden;
-            btnLogin.Visibility = Visibility.Visible;
+            
 
         }
 

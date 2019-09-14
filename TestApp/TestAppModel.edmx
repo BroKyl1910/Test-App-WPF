@@ -9,9 +9,9 @@
           <Key>
             <PropertyRef Name="AnswerID" />
           </Key>
-          <Property Name="AnswerID" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="TestID" Type="varchar" MaxLength="10" />
-          <Property Name="QuestionID" Type="varchar" MaxLength="10" />
+          <Property Name="AnswerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestID" Type="int" />
+          <Property Name="QuestionID" Type="int" />
           <Property Name="Username" Type="varchar" MaxLength="50" />
           <Property Name="AttemptNumber" Type="int" Nullable="false" />
           <Property Name="UserAnswer" Type="int" Nullable="false" />
@@ -27,7 +27,7 @@
           <Key>
             <PropertyRef Name="LecturerAssignmentID" />
           </Key>
-          <Property Name="LecturerAssignmentID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LecturerAssignmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ModuleID" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
@@ -42,7 +42,7 @@
           <Key>
             <PropertyRef Name="ModuleCourseID" />
           </Key>
-          <Property Name="ModuleCourseID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ModuleCourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ModuleID" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="CourseID" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
@@ -50,8 +50,8 @@
           <Key>
             <PropertyRef Name="QuestionID" />
           </Key>
-          <Property Name="QuestionID" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="TestID" Type="varchar" MaxLength="10" />
+          <Property Name="QuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestID" Type="int" />
           <Property Name="QuestionText" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Answer1" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Answer2" Type="varchar" MaxLength="100" Nullable="false" />
@@ -62,8 +62,8 @@
           <Key>
             <PropertyRef Name="ResultID" />
           </Key>
-          <Property Name="ResultID" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="TestID" Type="varchar" MaxLength="10" />
+          <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestID" Type="int" />
           <Property Name="Username" Type="varchar" MaxLength="50" />
           <Property Name="AttemptNumber" Type="int" Nullable="false" />
           <Property Name="UserResult" Type="int" Nullable="false" />
@@ -73,7 +73,7 @@
           <Key>
             <PropertyRef Name="StudentAssignmentID" />
           </Key>
-          <Property Name="StudentAssignmentID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StudentAssignmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CourseID" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
@@ -81,7 +81,7 @@
           <Key>
             <PropertyRef Name="TestID" />
           </Key>
-          <Property Name="TestID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" />
           <Property Name="ModuleID" Type="varchar" MaxLength="10" />
           <Property Name="DueDate" Type="datetime" />
@@ -341,9 +341,9 @@
           <Key>
             <PropertyRef Name="AnswerID" />
           </Key>
-          <Property Name="AnswerID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TestID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="QuestionID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AnswerID" Type="String" Nullable="false" />
+          <Property Name="TestID" Type="String" />
+          <Property Name="QuestionID" Type="String" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AttemptNumber" Type="Int32" Nullable="false" />
           <Property Name="UserAnswer" Type="Int32" Nullable="false" />
@@ -364,7 +364,7 @@
           <Key>
             <PropertyRef Name="LecturerAssignmentID" />
           </Key>
-          <Property Name="LecturerAssignmentID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LecturerAssignmentID" Type="String" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModuleID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Module" Relationship="Self.FK__LecturerA__Modul__45F365D3" FromRole="LecturerAssignment" ToRole="Module" />
@@ -384,7 +384,7 @@
           <Key>
             <PropertyRef Name="ModuleCourseID" />
           </Key>
-          <Property Name="ModuleCourseID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModuleCourseID" Type="String" Nullable="false" />
           <Property Name="ModuleID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CourseID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="Self.FK__ModuleCou__Cours__3E52440B" FromRole="ModuleCourse" ToRole="Course" />
@@ -394,8 +394,8 @@
           <Key>
             <PropertyRef Name="QuestionID" />
           </Key>
-          <Property Name="QuestionID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TestID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="QuestionID" Type="String" Nullable="false" />
+          <Property Name="TestID" Type="String" />
           <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Answer1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Answer2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -408,8 +408,8 @@
           <Key>
             <PropertyRef Name="ResultID" />
           </Key>
-          <Property Name="ResultID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TestID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ResultID" Type="String" Nullable="false" />
+          <Property Name="TestID" Type="String" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AttemptNumber" Type="Int32" Nullable="false" />
           <Property Name="UserResult" Type="Int32" Nullable="false" />
@@ -421,7 +421,7 @@
           <Key>
             <PropertyRef Name="StudentAssignmentID" />
           </Key>
-          <Property Name="StudentAssignmentID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudentAssignmentID" Type="String" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CourseID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="Self.FK__StudentAs__Cours__4222D4EF" FromRole="StudentAssignment" ToRole="Course" />
@@ -431,7 +431,7 @@
           <Key>
             <PropertyRef Name="TestID" />
           </Key>
-          <Property Name="TestID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TestID" Type="String" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModuleID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="DueDate" Type="DateTime" Precision="3" />

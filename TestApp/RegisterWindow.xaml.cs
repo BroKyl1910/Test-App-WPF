@@ -146,7 +146,7 @@ namespace TestApp
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             new LoginWindow().Show();
-            this.Close();
+            this.Hide();
         }
 
         private void Window_Closed(object sender, EventArgs e)

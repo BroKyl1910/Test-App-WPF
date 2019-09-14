@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestApp
 {
-    class AppUser
+    public class AppUser
     {
         public AppUser(string firstName, string surname, string username, UserType userType)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestApp
 {
-    enum UserType
+    public enum UserType
     {
         STUDENT = 0, 
         LECTURER
