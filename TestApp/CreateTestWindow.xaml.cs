@@ -38,6 +38,20 @@ namespace TestApp
             questionIndex = 0;
             answerRadioButtons = new RadioButton[] { rdioA, rdioB, rdioC };
 
+            // Set up GUI
+            User user = db.Users.First(u => u.Username.Equals("BroKyl1910"));
+            List<Module> lecturerModules = user.LecturerAssignments.Select(a => a.Module).ToList();
+            DateTime today = DateTime.Today;
+
+            //Add modules to combobox
+            cmbModule.Items.Clear();
+            foreach(Module module in lecturerModules)
+            {
+                cmbModule.Items.Add(module);
+            }
+
+            dtpDueDate.SelectedDate = today;
+
             UpdateQuestionDisplay();
             UpdateNextPrevButtons();
         }
@@ -159,6 +173,24 @@ namespace TestApp
         private bool AllFieldsFilled()
         {
             return !(txtQuestion.Text.Equals("") || txtA.Text.Equals("") || txtB.Text.Equals("") || txtC.Text.Equals("") || Array.FindIndex(answerRadioButtons, r=> r.IsChecked==true) == -1);
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if(questions.Count == 0)
+            {
+                crdError.Visibility = Visibility.Visible;
+                lblError.Text = "Test must have at least one question";
+                return;
+            }
+            crdError.Visibility = Visibility.Hidden;
+            questions.RemoveAt(questionIndex);
+            if (questionIndex >= questions.Count)
+            {
+                questionIndex = questions.Count - 1;
+            }
+
+            UpdateQuestionDisplay();
         }
     }
 }

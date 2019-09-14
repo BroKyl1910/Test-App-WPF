@@ -25,9 +25,9 @@
         <DockPanel Margin="16,153,16,10">
             <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C">
                 <Grid Margin="0,0,0,0">
-                    <TextBox HorizontalAlignment="Left" Height="35" Margin="23,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" FontSize="16" materialDesign:HintAssist.Hint="Title"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="366,29,0,0" VerticalAlignment="Top" Width="177" FontSize="16" materialDesign:HintAssist.Hint="Module" Height="35"/>
-                    <DatePicker HorizontalAlignment="Left" Margin="571,29,0,0" VerticalAlignment="Top" FontSize="16" materialDesign:HintAssist.Hint="Due Date" Height="35" Width="201"/>
+                    <TextBox x:Name="txtTestTitle"  HorizontalAlignment="Left" Height="35" Margin="23,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" FontSize="16" materialDesign:HintAssist.Hint="Title"/>
+                    <ComboBox x:Name="cmbModule" HorizontalAlignment="Left" Margin="366,29,0,0" VerticalAlignment="Top" Width="177" FontSize="16" materialDesign:HintAssist.Hint="Module" Height="35"/>
+                    <DatePicker x:Name="dtpDueDate" HorizontalAlignment="Left" Margin="571,29,0,0" VerticalAlignment="Top" FontSize="16" materialDesign:HintAssist.Hint="Due Date" Height="35" Width="201"/>
 
                     <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C" Margin="23,111,29,134">
                         <Grid Margin="0,0,0,0">
@@ -42,7 +42,7 @@
                             <TextBox x:Name="txtC" HorizontalAlignment="Left" Height="23" Margin="101,267,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer C..." VerticalAlignment="Top" Width="623"/>
                             <Button x:Name="btnNext" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnNext_Click"/>
                             <Button x:Name="btnPrev" Content="Prev" Margin="551,364,103,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnPrev_Click"/>
-                            <Button x:Name="btnDelete" Content="Delete" Margin="551,20,103,354" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
+                            <Button x:Name="btnDelete" Content="Delete" Margin="551,20,103,354" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnDelete_Click"/>
                             <Button x:Name="btnSaveQuestion" Content="Save" Margin="644,20,10,354" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="btnSaveQuestion_Click"/>
 
                         </Grid>
