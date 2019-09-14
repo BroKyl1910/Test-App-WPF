@@ -22,7 +22,7 @@ namespace TestApp
             this.Results = new HashSet<Result>();
         }
     
-        public string TestID { get; set; }
+        public int TestID { get; set; }
         public string Username { get; set; }
         public string ModuleID { get; set; }
         public Nullable<System.DateTime> DueDate { get; set; }

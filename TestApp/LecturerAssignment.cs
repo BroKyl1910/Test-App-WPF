@@ -14,7 +14,7 @@ namespace TestApp
     
     public partial class LecturerAssignment
     {
-        public string LecturerAssignmentID { get; set; }
+        public int LecturerAssignmentID { get; set; }
         public string Username { get; set; }
         public string ModuleID { get; set; }
     

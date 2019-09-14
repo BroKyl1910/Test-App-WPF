@@ -14,8 +14,8 @@ namespace TestApp
     
     public partial class Result
     {
-        public string ResultID { get; set; }
-        public string TestID { get; set; }
+        public int ResultID { get; set; }
+        public Nullable<int> TestID { get; set; }
         public string Username { get; set; }
         public int AttemptNumber { get; set; }
         public int UserResult { get; set; }

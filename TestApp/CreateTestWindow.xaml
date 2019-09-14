@@ -31,8 +31,8 @@
 
                     <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C" Margin="23,111,29,134">
                         <Grid Margin="0,0,0,0">
-                            <TextBlock Name="lblQuestionNumber" HorizontalAlignment="Left" FontSize="28" Margin="23,20,0,0" TextWrapping="Wrap" Text="Question 1" VerticalAlignment="Top"/>
-                            <TextBox FontSize="20" Height="Auto" Margin="23,72,23,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Type question here..." VerticalAlignment="Top" CaretBrush="White"/>
+                            <TextBlock x:Name="lblQuestionNumber" HorizontalAlignment="Left" FontSize="28" Margin="23,20,0,0" TextWrapping="Wrap" Text="Question 1" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtQuestion" FontSize="20" Height="Auto" Margin="23,72,23,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Type question here..." VerticalAlignment="Top" CaretBrush="White"/>
                             <Label Content="Correct Answer" HorizontalAlignment="Left" Margin="23,131,0,0" VerticalAlignment="Top"/>
                             <RadioButton x:Name="rdioA" GroupName="grpCorrectAnswer" Content="A." HorizontalAlignment="Left" Margin="32,174,0,0" VerticalAlignment="Top"/>
                             <RadioButton x:Name="rdioB" GroupName="grpCorrectAnswer" Content="B." HorizontalAlignment="Left" Margin="32,222,0,0" VerticalAlignment="Top"/>
@@ -40,15 +40,15 @@
                             <TextBox x:Name="txtA" HorizontalAlignment="Left" Height="23" Margin="101,172,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer A..." VerticalAlignment="Top" Width="623"/>
                             <TextBox x:Name="txtB" HorizontalAlignment="Left" Height="23" Margin="101,220,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer B..." VerticalAlignment="Top" Width="623"/>
                             <TextBox x:Name="txtC" HorizontalAlignment="Left" Height="23" Margin="101,267,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer C..." VerticalAlignment="Top" Width="623"/>
-                            <Button x:Name="btnNext" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True"/>
-                            <Button x:Name="btnPrev" Content="Prev" HorizontalAlignment="Left" Margin="551,364,0,0" VerticalAlignment="Top" Width="93" Height="43" Background="{StaticResource Transparent}" Foreground="White"/>
-                            <Button x:Name="btnDelete" Content="Delete" Margin="551,20,103,0" VerticalAlignment="Top" Height="43" Background="{StaticResource Transparent}" Foreground="White"/>
-                            <Button x:Name="btnAdd" Content="Add" Margin="644,20,10,0" VerticalAlignment="Top" Height="43" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="BtnAdd_Click"/>
+                            <Button x:Name="btnNext" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnNext_Click"/>
+                            <Button x:Name="btnPrev" Content="Prev" Margin="551,364,103,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnPrev_Click"/>
+                            <Button x:Name="btnDelete" Content="Delete" Margin="551,20,103,354" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
+                            <Button x:Name="btnSaveQuestion" Content="Save" Margin="644,20,10,354" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="btnSaveQuestion_Click"/>
 
                         </Grid>
                     </Border>
-                    <Button x:Name="btnSave" Content="Save and Finish" Margin="633,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True"/>
-                    <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="540,611,0,0" VerticalAlignment="Top" Width="93" Height="43" Background="{StaticResource Transparent}" Foreground="White"/>
+                    <Button x:Name="btnSaveTest" Content="Save and Finish" Margin="633,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True"/>
+                    <Button x:Name="btnCancel" Content="Cancel" Margin="540,611,168,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
 
                 </Grid>
             </Border>

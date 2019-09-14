@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TestAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TestAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Answer">
           <Key>
             <PropertyRef Name="AnswerID" />
@@ -333,7 +333,8 @@
             <End Role="Test" EntitySet="Test" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TestAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -341,15 +342,15 @@
           <Key>
             <PropertyRef Name="AnswerID" />
           </Key>
-          <Property Name="AnswerID" Type="String" Nullable="false" />
-          <Property Name="TestID" Type="String" />
-          <Property Name="QuestionID" Type="String" />
+          <Property Name="AnswerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestID" Type="Int32" />
+          <Property Name="QuestionID" Type="Int32" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AttemptNumber" Type="Int32" Nullable="false" />
           <Property Name="UserAnswer" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Question" Relationship="Self.FK__Answer__Question__5070F446" FromRole="Answer" ToRole="Question" />
-          <NavigationProperty Name="Test" Relationship="Self.FK__Answer__TestID__4F7CD00D" FromRole="Answer" ToRole="Test" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Answer__Username__5165187F" FromRole="Answer" ToRole="User" />
+          <NavigationProperty Name="Question" Relationship="Self.FK__Answer__Question__5165187F" FromRole="Answer" ToRole="Question" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__Answer__TestID__5070F446" FromRole="Answer" ToRole="Test" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Answer__Username__52593CB8" FromRole="Answer" ToRole="User" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -357,18 +358,18 @@
           </Key>
           <Property Name="CourseID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ModuleCourses" Relationship="Self.FK__ModuleCou__Cours__3E52440B" FromRole="Course" ToRole="ModuleCourse" />
-          <NavigationProperty Name="StudentAssignments" Relationship="Self.FK__StudentAs__Cours__4222D4EF" FromRole="Course" ToRole="StudentAssignment" />
+          <NavigationProperty Name="ModuleCourses" Relationship="Self.FK__ModuleCou__Cours__3F466844" FromRole="Course" ToRole="ModuleCourse" />
+          <NavigationProperty Name="StudentAssignments" Relationship="Self.FK__StudentAs__Cours__4316F928" FromRole="Course" ToRole="StudentAssignment" />
         </EntityType>
         <EntityType Name="LecturerAssignment">
           <Key>
             <PropertyRef Name="LecturerAssignmentID" />
           </Key>
-          <Property Name="LecturerAssignmentID" Type="String" Nullable="false" />
+          <Property Name="LecturerAssignmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModuleID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Module" Relationship="Self.FK__LecturerA__Modul__45F365D3" FromRole="LecturerAssignment" ToRole="Module" />
-          <NavigationProperty Name="User" Relationship="Self.FK__LecturerA__Usern__44FF419A" FromRole="LecturerAssignment" ToRole="User" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__LecturerA__Modul__46E78A0C" FromRole="LecturerAssignment" ToRole="Module" />
+          <NavigationProperty Name="User" Relationship="Self.FK__LecturerA__Usern__45F365D3" FromRole="LecturerAssignment" ToRole="User" />
         </EntityType>
         <EntityType Name="Module">
           <Key>
@@ -376,70 +377,70 @@
           </Key>
           <Property Name="ModuleID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="LecturerAssignments" Relationship="Self.FK__LecturerA__Modul__45F365D3" FromRole="Module" ToRole="LecturerAssignment" />
-          <NavigationProperty Name="ModuleCourses" Relationship="Self.FK__ModuleCou__Modul__3D5E1FD2" FromRole="Module" ToRole="ModuleCourse" />
-          <NavigationProperty Name="Tests" Relationship="Self.FK__Test__ModuleID__49C3F6B7" FromRole="Module" ToRole="Test" />
+          <NavigationProperty Name="LecturerAssignments" Relationship="Self.FK__LecturerA__Modul__46E78A0C" FromRole="Module" ToRole="LecturerAssignment" />
+          <NavigationProperty Name="ModuleCourses" Relationship="Self.FK__ModuleCou__Modul__3E52440B" FromRole="Module" ToRole="ModuleCourse" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK__Test__ModuleID__4AB81AF0" FromRole="Module" ToRole="Test" />
         </EntityType>
         <EntityType Name="ModuleCourse">
           <Key>
             <PropertyRef Name="ModuleCourseID" />
           </Key>
-          <Property Name="ModuleCourseID" Type="String" Nullable="false" />
+          <Property Name="ModuleCourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ModuleID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CourseID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Course" Relationship="Self.FK__ModuleCou__Cours__3E52440B" FromRole="ModuleCourse" ToRole="Course" />
-          <NavigationProperty Name="Module" Relationship="Self.FK__ModuleCou__Modul__3D5E1FD2" FromRole="ModuleCourse" ToRole="Module" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__ModuleCou__Cours__3F466844" FromRole="ModuleCourse" ToRole="Course" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__ModuleCou__Modul__3E52440B" FromRole="ModuleCourse" ToRole="Module" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
             <PropertyRef Name="QuestionID" />
           </Key>
-          <Property Name="QuestionID" Type="String" Nullable="false" />
-          <Property Name="TestID" Type="String" />
+          <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestID" Type="Int32" />
           <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Answer1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Answer2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Answer3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CorrectAnswer" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__Question__5070F446" FromRole="Question" ToRole="Answer" />
-          <NavigationProperty Name="Test" Relationship="Self.FK__Question__TestID__4CA06362" FromRole="Question" ToRole="Test" />
+          <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__Question__5165187F" FromRole="Question" ToRole="Answer" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__Question__TestID__4D94879B" FromRole="Question" ToRole="Test" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
             <PropertyRef Name="ResultID" />
           </Key>
-          <Property Name="ResultID" Type="String" Nullable="false" />
-          <Property Name="TestID" Type="String" />
+          <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestID" Type="Int32" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AttemptNumber" Type="Int32" Nullable="false" />
           <Property Name="UserResult" Type="Int32" Nullable="false" />
           <Property Name="ResultPercentage" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <NavigationProperty Name="Test" Relationship="Self.FK__Result__TestID__5441852A" FromRole="Result" ToRole="Test" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Result__Username__5535A963" FromRole="Result" ToRole="User" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__Result__TestID__5535A963" FromRole="Result" ToRole="Test" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Result__Username__5629CD9C" FromRole="Result" ToRole="User" />
         </EntityType>
         <EntityType Name="StudentAssignment">
           <Key>
             <PropertyRef Name="StudentAssignmentID" />
           </Key>
-          <Property Name="StudentAssignmentID" Type="String" Nullable="false" />
+          <Property Name="StudentAssignmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CourseID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Course" Relationship="Self.FK__StudentAs__Cours__4222D4EF" FromRole="StudentAssignment" ToRole="Course" />
-          <NavigationProperty Name="User" Relationship="Self.FK__StudentAs__Usern__412EB0B6" FromRole="StudentAssignment" ToRole="User" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__StudentAs__Cours__4316F928" FromRole="StudentAssignment" ToRole="Course" />
+          <NavigationProperty Name="User" Relationship="Self.FK__StudentAs__Usern__4222D4EF" FromRole="StudentAssignment" ToRole="User" />
         </EntityType>
         <EntityType Name="Test">
           <Key>
             <PropertyRef Name="TestID" />
           </Key>
-          <Property Name="TestID" Type="String" Nullable="false" />
+          <Property Name="TestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ModuleID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="DueDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__TestID__4F7CD00D" FromRole="Test" ToRole="Answer" />
-          <NavigationProperty Name="Module" Relationship="Self.FK__Test__ModuleID__49C3F6B7" FromRole="Test" ToRole="Module" />
-          <NavigationProperty Name="Questions" Relationship="Self.FK__Question__TestID__4CA06362" FromRole="Test" ToRole="Question" />
-          <NavigationProperty Name="Results" Relationship="Self.FK__Result__TestID__5441852A" FromRole="Test" ToRole="Result" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Test__Username__48CFD27E" FromRole="Test" ToRole="User" />
+          <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__TestID__5070F446" FromRole="Test" ToRole="Answer" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__Test__ModuleID__4AB81AF0" FromRole="Test" ToRole="Module" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK__Question__TestID__4D94879B" FromRole="Test" ToRole="Question" />
+          <NavigationProperty Name="Results" Relationship="Self.FK__Result__TestID__5535A963" FromRole="Test" ToRole="Result" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Test__Username__49C3F6B7" FromRole="Test" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -450,14 +451,14 @@
           <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__Username__5165187F" FromRole="User" ToRole="Answer" />
-          <NavigationProperty Name="LecturerAssignments" Relationship="Self.FK__LecturerA__Usern__44FF419A" FromRole="User" ToRole="LecturerAssignment" />
-          <NavigationProperty Name="Results" Relationship="Self.FK__Result__Username__5535A963" FromRole="User" ToRole="Result" />
-          <NavigationProperty Name="StudentAssignments" Relationship="Self.FK__StudentAs__Usern__412EB0B6" FromRole="User" ToRole="StudentAssignment" />
-          <NavigationProperty Name="Tests" Relationship="Self.FK__Test__Username__48CFD27E" FromRole="User" ToRole="Test" />
           <Property Name="UniversityIdentification" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__Username__52593CB8" FromRole="User" ToRole="Answer" />
+          <NavigationProperty Name="LecturerAssignments" Relationship="Self.FK__LecturerA__Usern__45F365D3" FromRole="User" ToRole="LecturerAssignment" />
+          <NavigationProperty Name="Results" Relationship="Self.FK__Result__Username__5629CD9C" FromRole="User" ToRole="Result" />
+          <NavigationProperty Name="StudentAssignments" Relationship="Self.FK__StudentAs__Usern__4222D4EF" FromRole="User" ToRole="StudentAssignment" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK__Test__Username__49C3F6B7" FromRole="User" ToRole="Test" />
         </EntityType>
-        <Association Name="FK__Answer__Question__5070F446">
+        <Association Name="FK__Answer__Question__5165187F">
           <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -469,7 +470,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Answer__TestID__4F7CD00D">
+        <Association Name="FK__Answer__TestID__5070F446">
           <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -481,7 +482,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Answer__Username__5165187F">
+        <Association Name="FK__Answer__Username__52593CB8">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -493,7 +494,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ModuleCou__Cours__3E52440B">
+        <Association Name="FK__ModuleCou__Cours__3F466844">
           <End Role="Course" Type="Self.Course" Multiplicity="1" />
           <End Role="ModuleCourse" Type="Self.ModuleCourse" Multiplicity="*" />
           <ReferentialConstraint>
@@ -505,7 +506,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentAs__Cours__4222D4EF">
+        <Association Name="FK__StudentAs__Cours__4316F928">
           <End Role="Course" Type="Self.Course" Multiplicity="1" />
           <End Role="StudentAssignment" Type="Self.StudentAssignment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -517,7 +518,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LecturerA__Modul__45F365D3">
+        <Association Name="FK__LecturerA__Modul__46E78A0C">
           <End Role="Module" Type="Self.Module" Multiplicity="1" />
           <End Role="LecturerAssignment" Type="Self.LecturerAssignment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -529,7 +530,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LecturerA__Usern__44FF419A">
+        <Association Name="FK__LecturerA__Usern__45F365D3">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="LecturerAssignment" Type="Self.LecturerAssignment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -541,7 +542,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ModuleCou__Modul__3D5E1FD2">
+        <Association Name="FK__ModuleCou__Modul__3E52440B">
           <End Role="Module" Type="Self.Module" Multiplicity="1" />
           <End Role="ModuleCourse" Type="Self.ModuleCourse" Multiplicity="*" />
           <ReferentialConstraint>
@@ -553,7 +554,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Test__ModuleID__49C3F6B7">
+        <Association Name="FK__Test__ModuleID__4AB81AF0">
           <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
           <End Role="Test" Type="Self.Test" Multiplicity="*" />
           <ReferentialConstraint>
@@ -565,7 +566,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Question__TestID__4CA06362">
+        <Association Name="FK__Question__TestID__4D94879B">
           <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
           <End Role="Question" Type="Self.Question" Multiplicity="*" />
           <ReferentialConstraint>
@@ -577,7 +578,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Result__TestID__5441852A">
+        <Association Name="FK__Result__TestID__5535A963">
           <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
           <End Role="Result" Type="Self.Result" Multiplicity="*" />
           <ReferentialConstraint>
@@ -589,7 +590,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Result__Username__5535A963">
+        <Association Name="FK__Result__Username__5629CD9C">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Result" Type="Self.Result" Multiplicity="*" />
           <ReferentialConstraint>
@@ -601,7 +602,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentAs__Usern__412EB0B6">
+        <Association Name="FK__StudentAs__Usern__4222D4EF">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="StudentAssignment" Type="Self.StudentAssignment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -613,7 +614,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Test__Username__48CFD27E">
+        <Association Name="FK__Test__Username__49C3F6B7">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Test" Type="Self.Test" Multiplicity="*" />
           <ReferentialConstraint>
@@ -636,59 +637,59 @@
           <EntitySet Name="StudentAssignments" EntityType="Self.StudentAssignment" />
           <EntitySet Name="Tests" EntityType="Self.Test" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__Answer__Question__5070F446" Association="Self.FK__Answer__Question__5070F446">
+          <AssociationSet Name="FK__Answer__Question__5165187F" Association="Self.FK__Answer__Question__5165187F">
             <End Role="Question" EntitySet="Questions" />
             <End Role="Answer" EntitySet="Answers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Answer__TestID__4F7CD00D" Association="Self.FK__Answer__TestID__4F7CD00D">
+          <AssociationSet Name="FK__Answer__TestID__5070F446" Association="Self.FK__Answer__TestID__5070F446">
             <End Role="Test" EntitySet="Tests" />
             <End Role="Answer" EntitySet="Answers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Answer__Username__5165187F" Association="Self.FK__Answer__Username__5165187F">
+          <AssociationSet Name="FK__Answer__Username__52593CB8" Association="Self.FK__Answer__Username__52593CB8">
             <End Role="User" EntitySet="Users" />
             <End Role="Answer" EntitySet="Answers" />
           </AssociationSet>
-          <AssociationSet Name="FK__ModuleCou__Cours__3E52440B" Association="Self.FK__ModuleCou__Cours__3E52440B">
+          <AssociationSet Name="FK__ModuleCou__Cours__3F466844" Association="Self.FK__ModuleCou__Cours__3F466844">
             <End Role="Course" EntitySet="Courses" />
             <End Role="ModuleCourse" EntitySet="ModuleCourses" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentAs__Cours__4222D4EF" Association="Self.FK__StudentAs__Cours__4222D4EF">
+          <AssociationSet Name="FK__StudentAs__Cours__4316F928" Association="Self.FK__StudentAs__Cours__4316F928">
             <End Role="Course" EntitySet="Courses" />
             <End Role="StudentAssignment" EntitySet="StudentAssignments" />
           </AssociationSet>
-          <AssociationSet Name="FK__LecturerA__Modul__45F365D3" Association="Self.FK__LecturerA__Modul__45F365D3">
+          <AssociationSet Name="FK__LecturerA__Modul__46E78A0C" Association="Self.FK__LecturerA__Modul__46E78A0C">
             <End Role="Module" EntitySet="Modules" />
             <End Role="LecturerAssignment" EntitySet="LecturerAssignments" />
           </AssociationSet>
-          <AssociationSet Name="FK__LecturerA__Usern__44FF419A" Association="Self.FK__LecturerA__Usern__44FF419A">
+          <AssociationSet Name="FK__LecturerA__Usern__45F365D3" Association="Self.FK__LecturerA__Usern__45F365D3">
             <End Role="User" EntitySet="Users" />
             <End Role="LecturerAssignment" EntitySet="LecturerAssignments" />
           </AssociationSet>
-          <AssociationSet Name="FK__ModuleCou__Modul__3D5E1FD2" Association="Self.FK__ModuleCou__Modul__3D5E1FD2">
+          <AssociationSet Name="FK__ModuleCou__Modul__3E52440B" Association="Self.FK__ModuleCou__Modul__3E52440B">
             <End Role="Module" EntitySet="Modules" />
             <End Role="ModuleCourse" EntitySet="ModuleCourses" />
           </AssociationSet>
-          <AssociationSet Name="FK__Test__ModuleID__49C3F6B7" Association="Self.FK__Test__ModuleID__49C3F6B7">
+          <AssociationSet Name="FK__Test__ModuleID__4AB81AF0" Association="Self.FK__Test__ModuleID__4AB81AF0">
             <End Role="Module" EntitySet="Modules" />
             <End Role="Test" EntitySet="Tests" />
           </AssociationSet>
-          <AssociationSet Name="FK__Question__TestID__4CA06362" Association="Self.FK__Question__TestID__4CA06362">
+          <AssociationSet Name="FK__Question__TestID__4D94879B" Association="Self.FK__Question__TestID__4D94879B">
             <End Role="Test" EntitySet="Tests" />
             <End Role="Question" EntitySet="Questions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Result__TestID__5441852A" Association="Self.FK__Result__TestID__5441852A">
+          <AssociationSet Name="FK__Result__TestID__5535A963" Association="Self.FK__Result__TestID__5535A963">
             <End Role="Test" EntitySet="Tests" />
             <End Role="Result" EntitySet="Results" />
           </AssociationSet>
-          <AssociationSet Name="FK__Result__Username__5535A963" Association="Self.FK__Result__Username__5535A963">
+          <AssociationSet Name="FK__Result__Username__5629CD9C" Association="Self.FK__Result__Username__5629CD9C">
             <End Role="User" EntitySet="Users" />
             <End Role="Result" EntitySet="Results" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentAs__Usern__412EB0B6" Association="Self.FK__StudentAs__Usern__412EB0B6">
+          <AssociationSet Name="FK__StudentAs__Usern__4222D4EF" Association="Self.FK__StudentAs__Usern__4222D4EF">
             <End Role="User" EntitySet="Users" />
             <End Role="StudentAssignment" EntitySet="StudentAssignments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Test__Username__48CFD27E" Association="Self.FK__Test__Username__48CFD27E">
+          <AssociationSet Name="FK__Test__Username__49C3F6B7" Association="Self.FK__Test__Username__49C3F6B7">
             <End Role="User" EntitySet="Users" />
             <End Role="Test" EntitySet="Tests" />
           </AssociationSet>
@@ -792,12 +793,12 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="TestAppModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="UniversityIdentification" ColumnName="UniversityIdentification" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UniversityIdentification" ColumnName="UniversityIdentification" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

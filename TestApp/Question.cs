@@ -20,8 +20,8 @@ namespace TestApp
             this.Answers = new HashSet<Answer>();
         }
     
-        public string QuestionID { get; set; }
-        public string TestID { get; set; }
+        public int QuestionID { get; set; }
+        public Nullable<int> TestID { get; set; }
         public string QuestionText { get; set; }
         public string Answer1 { get; set; }
         public string Answer2 { get; set; }
