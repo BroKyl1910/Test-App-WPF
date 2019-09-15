@@ -16,39 +16,39 @@
         FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid x:Name="grdMain" Margin="0,0,0,0">
         <DockPanel x:Name="pnlNavigation" HorizontalAlignment="Left" VerticalAlignment="Top" Height="53" Width="833"  Background="{StaticResource PrimaryColorTransparent}">
-            <Button x:Name="btnHome" Content="Home" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White"/>
-            <Button x:Name="btnTests" Content="Tests" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
-            <Button x:Name="btnResults" Content="Results" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
-            <Button x:Name="btnLogout" Content="Log Out" HorizontalAlignment="Right" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" />
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnHome" Content="Home" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnTests" Content="Tests" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnResults" Content="Results" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
+            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnLogout" Content="Log Out" HorizontalAlignment="Right" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" />
         </DockPanel>
-        <TextBlock VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="25,79,632,0" TextAlignment="Center"><Run Text="Create"/></TextBlock>
+        <TextBlock VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="25,79,632,0" TextAlignment="Center" Foreground="#DDFFFFFF"><Run Text="Create"/></TextBlock>
         <DockPanel Margin="16,153,16,10">
             <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C">
                 <Grid Margin="0,0,0,0">
-                    <TextBox x:Name="txtTestTitle"  HorizontalAlignment="Left" Height="35" Margin="23,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" FontSize="16" materialDesign:HintAssist.Hint="Title"/>
-                    <ComboBox x:Name="cmbModule" HorizontalAlignment="Left" Margin="366,29,0,0" VerticalAlignment="Top" Width="177" FontSize="16" materialDesign:HintAssist.Hint="Module" Height="35"/>
-                    <DatePicker x:Name="dtpDueDate" HorizontalAlignment="Left" Margin="571,29,0,0" VerticalAlignment="Top" FontSize="16" materialDesign:HintAssist.Hint="Due Date" Height="35" Width="201"/>
+                    <TextBox x:Name="txtTestTitle"  HorizontalAlignment="Left" Height="35" Margin="23,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" FontSize="16" materialDesign:HintAssist.Hint="Title" Foreground="#DDFFFFFF"/>
+                    <ComboBox x:Name="cmbModule" HorizontalAlignment="Left" Margin="366,29,0,0" VerticalAlignment="Top" Width="177" FontSize="16" materialDesign:HintAssist.Hint="Module" Height="35" Foreground="#DDFFFFFF"/>
+                    <DatePicker x:Name="dtpDueDate" HorizontalAlignment="Left" Margin="571,29,0,0" VerticalAlignment="Top" FontSize="16" materialDesign:HintAssist.Hint="Due Date" Height="35" Width="201" Foreground="#DDFFFFFF"/>
 
                     <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C" Margin="23,111,29,134">
                         <Grid Margin="0,0,0,0">
-                            <TextBlock x:Name="lblQuestionNumber" HorizontalAlignment="Left" FontSize="28" Margin="23,20,0,0" TextWrapping="Wrap" Text="Question 1" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtQuestion" FontSize="20" Height="Auto" Margin="23,72,23,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Type question here..." VerticalAlignment="Top" CaretBrush="White"/>
-                            <Label Content="Correct Answer" HorizontalAlignment="Left" Margin="23,131,0,0" VerticalAlignment="Top"/>
-                            <RadioButton x:Name="rdioA" GroupName="grpCorrectAnswer" Content="A." HorizontalAlignment="Left" Margin="32,174,0,0" VerticalAlignment="Top"/>
-                            <RadioButton x:Name="rdioB" GroupName="grpCorrectAnswer" Content="B." HorizontalAlignment="Left" Margin="32,222,0,0" VerticalAlignment="Top"/>
-                            <RadioButton x:Name="rdioC" GroupName="grpCorrectAnswer" Content="C." HorizontalAlignment="Left" Margin="32,269,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="txtA" HorizontalAlignment="Left" Height="23" Margin="101,172,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer A..." VerticalAlignment="Top" Width="623"/>
-                            <TextBox x:Name="txtB" HorizontalAlignment="Left" Height="23" Margin="101,220,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer B..." VerticalAlignment="Top" Width="623"/>
-                            <TextBox x:Name="txtC" HorizontalAlignment="Left" Height="23" Margin="101,267,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer C..." VerticalAlignment="Top" Width="623"/>
+                            <TextBlock x:Name="lblQuestionNumber" HorizontalAlignment="Left" FontSize="28" Margin="23,20,0,0" TextWrapping="Wrap" Text="Question 1" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                            <TextBox x:Name="txtQuestion" FontSize="20" Height="Auto" Margin="23,72,23,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Type question here..." VerticalAlignment="Top" CaretBrush="White" Foreground="#DDFFFFFF"/>
+                            <Label Content="Correct Answer" HorizontalAlignment="Left" Margin="23,131,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                            <RadioButton x:Name="rdioA" GroupName="grpCorrectAnswer" Content="A." HorizontalAlignment="Left" Margin="32,174,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                            <RadioButton x:Name="rdioB" GroupName="grpCorrectAnswer" Content="B." HorizontalAlignment="Left" Margin="32,222,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                            <RadioButton x:Name="rdioC" GroupName="grpCorrectAnswer" Content="C." HorizontalAlignment="Left" Margin="32,269,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                            <TextBox x:Name="txtA" HorizontalAlignment="Left" Height="23" Margin="101,172,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer A..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
+                            <TextBox x:Name="txtB" HorizontalAlignment="Left" Height="23" Margin="101,220,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer B..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
+                            <TextBox x:Name="txtC" HorizontalAlignment="Left" Height="23" Margin="101,267,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer C..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
                             <Button x:Name="btnNext" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnNext_Click"/>
-                            <Button x:Name="btnPrev" Content="Prev" Margin="551,364,103,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnPrev_Click"/>
-                            <Button x:Name="btnDelete" Content="Delete" Margin="551,20,103,354" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnDelete_Click"/>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnPrev" Content="Prev" Margin="551,364,103,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnPrev_Click"/>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnDelete" Content="Delete" Margin="551,20,103,354" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnDelete_Click"/>
                             <Button x:Name="btnSaveQuestion" Content="Save" Margin="644,20,10,354" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="btnSaveQuestion_Click"/>
 
                         </Grid>
                     </Border>
-                    <Button x:Name="btnSaveTest" Content="Save and Finish" Margin="633,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True"/>
-                    <Button x:Name="btnCancel" Content="Cancel" Margin="540,611,168,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
+                    <Button x:Name="btnSaveTest" Content="Save and Finish" Margin="633,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnSaveTest_Click"/>
+                    <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnCancel" Content="Cancel" Margin="540,611,168,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
 
                 </Grid>
             </Border>
@@ -56,7 +56,7 @@
         </DockPanel>
         <materialDesign:Card x:Name="crdError" HorizontalAlignment="Left" Margin="330,79,0,0" VerticalAlignment="Top" Height="48" Width="436"  Background="#33000000" Visibility="Hidden">
             <Grid>
-                <TextBlock Name="lblError" TextAlignment="Center" VerticalAlignment="Center" Text="Error: Please select city from list"></TextBlock>
+                <TextBlock Name="lblError" TextAlignment="Center" VerticalAlignment="Center" Text="Error: Please select city from list" Foreground="White"></TextBlock>
             </Grid>
         </materialDesign:Card>
 

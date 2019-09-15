@@ -21,6 +21,7 @@ namespace TestApp
     {
         TestAppEntities db = new TestAppEntities();
 
+        User user;
         Test test;
         List<Question> questions;
         int questionIndex;
@@ -39,7 +40,7 @@ namespace TestApp
             answerRadioButtons = new RadioButton[] { rdioA, rdioB, rdioC };
 
             // Set up GUI
-            User user = db.Users.First(u => u.Username.Equals("BroKyl1910"));
+            user = db.Users.First(u => u.Username.Equals("BroKyl1910"));
             List<Module> lecturerModules = user.LecturerAssignments.Select(a => a.Module).ToList();
             DateTime today = DateTime.Today;
 
@@ -58,7 +59,7 @@ namespace TestApp
 
         private void btnSaveQuestion_Click(object sender, RoutedEventArgs e)
         {
-            if (ValidateForm())
+            if (ValidateQuestionForm())
             {
                 Question question = new Question();
                 question.TestID = test.TestID;
@@ -66,9 +67,8 @@ namespace TestApp
                 question.Answer1 = txtA.Text;
                 question.Answer2 = txtB.Text;
                 question.Answer3 = txtC.Text;
-
-
                 question.CorrectAnswer = Array.FindIndex(answerRadioButtons, r => r.IsChecked == true);
+
                 if (questionIndex == questions.Count)
                 {
                     //new question
@@ -82,6 +82,14 @@ namespace TestApp
 
                 UpdateNextPrevButtons();
             }
+        }
+
+        private void SaveQuestion(Question question)
+        {
+            
+
+
+            
         }
 
         private void UpdateNextPrevButtons()
@@ -156,13 +164,13 @@ namespace TestApp
             UpdateNextPrevButtons();
         }
 
-        private bool ValidateForm()
+        private bool ValidateQuestionForm()
         {
             //Check all fields are filled
-            if (!AllFieldsFilled())
+            if (!AllQuestionFieldsFilled())
             {
                 crdError.Visibility = Visibility.Visible;
-                lblError.Text = "Please complete all fields";
+                lblError.Text = "Please complete all question fields";
                 return false;
             }
 
@@ -170,27 +178,79 @@ namespace TestApp
             return true;
         }
 
-        private bool AllFieldsFilled()
+        private bool AllQuestionFieldsFilled()
         {
             return !(txtQuestion.Text.Equals("") || txtA.Text.Equals("") || txtB.Text.Equals("") || txtC.Text.Equals("") || Array.FindIndex(answerRadioButtons, r=> r.IsChecked==true) == -1);
+        }
+        private bool ValidateTestForm()
+        {
+            //Check all fields are filled
+            if (!AllTestFieldsFilled())
+            {
+                crdError.Visibility = Visibility.Visible;
+                lblError.Text = "Please complete all test fields";
+                return false;
+            }
+
+            //Ensure test has questions
+            if (questions.Count == 0)
+            {
+                crdError.Visibility = Visibility.Visible;
+                lblError.Text = "Test has no questions";
+                return false;
+            }
+
+            crdError.Visibility = Visibility.Hidden;
+            return true;
+        }
+
+        private bool AllTestFieldsFilled()
+        {
+            return !(txtTestTitle.Text.Equals("") || dtpDueDate.SelectedDate == null || cmbModule.SelectedIndex==-1);
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if(questions.Count == 0)
+            //Ensure user can't be left in a situation where they have no questions
+            if(questions.Count <= 1 && questionIndex==0)
             {
                 crdError.Visibility = Visibility.Visible;
                 lblError.Text = "Test must have at least one question";
                 return;
             }
+
             crdError.Visibility = Visibility.Hidden;
+            if (questionIndex == questions.Count)
+            {
+                questionIndex--;
+                UpdateQuestionDisplay();
+                UpdateNextPrevButtons();
+                return;
+            }
             questions.RemoveAt(questionIndex);
+
             if (questionIndex >= questions.Count)
             {
                 questionIndex = questions.Count - 1;
             }
 
             UpdateQuestionDisplay();
+            UpdateNextPrevButtons();
+        }
+
+        private void BtnSaveTest_Click(object sender, RoutedEventArgs e)
+        {
+            if(ValidateQuestionForm() && ValidateTestForm())
+            {
+                test.Questions = questions;
+                test.Username = user.Username;
+                test.ModuleID = ((Module)cmbModule.SelectedItem).ModuleID;
+                test.DueDate = dtpDueDate.SelectedDate;
+                db.Tests.Add(test);
+
+                db.SaveChanges();
+                MessageBox.Show("Saved");
+            }
         }
     }
 }
