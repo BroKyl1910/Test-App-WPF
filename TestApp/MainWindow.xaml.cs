@@ -19,11 +19,17 @@ namespace TestApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        AppUser user;
-        public MainWindow(AppUser user)
+        object user;
+        bool isLecturer;
+
+        public MainWindow(object user)
         {
             InitializeComponent();
             this.user = user;
+            if(user.GetType() == typeof(AppLecturer))
+            {
+                isLecturer = true;
+            }
         }
 
         private void BtnTests_Click(object sender, RoutedEventArgs e)

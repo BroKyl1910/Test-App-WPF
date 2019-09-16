@@ -21,15 +21,16 @@ namespace TestApp
     {
         TestAppEntities db = new TestAppEntities();
 
-        User user;
+        User lecturer;
         Test test;
         List<Question> questions;
         int questionIndex;
         RadioButton[] answerRadioButtons;
 
-        public CreateTestWindow()
+        public CreateTestWindow(User lecturer)
         {
             InitializeComponent();
+            this.lecturer = lecturer;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -40,8 +41,7 @@ namespace TestApp
             answerRadioButtons = new RadioButton[] { rdioA, rdioB, rdioC };
 
             // Set up GUI
-            user = db.Users.First(u => u.Username.Equals("BroKyl1910"));
-            List<Module> lecturerModules = user.LecturerAssignments.Select(a => a.Module).ToList();
+            List<Module> lecturerModules = lecturer.LecturerAssignments.Select(a => a.Module).ToList();
             DateTime today = DateTime.Today;
 
             //Add modules to combobox
@@ -243,9 +243,9 @@ namespace TestApp
             if(ValidateQuestionForm() && ValidateTestForm())
             {
                 test.Questions = questions;
-                test.Username = user.Username;
+                test.Username = lecturer.Username;
                 test.ModuleID = ((Module)cmbModule.SelectedItem).ModuleID;
-                test.DueDate = dtpDueDate.SelectedDate;
+                test.DueDate = (DateTime) dtpDueDate.SelectedDate;
                 db.Tests.Add(test);
 
                 db.SaveChanges();

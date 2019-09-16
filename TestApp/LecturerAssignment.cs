@@ -20,7 +20,5 @@ namespace TestApp
     
         public virtual Module Module { get; set; }
         public virtual User User { get; set; }
-
-        
     }
 }

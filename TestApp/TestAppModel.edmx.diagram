@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7a015db1de454e7696427e64f800bfce" Name="Diagram1">
-        <EntityTypeShape EntityType="TestAppModel.Answer" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+      <Diagram DiagramId="b7d3759c85d54770ac4d5c24b33da9b9" Name="Diagram1">
+        <EntityTypeShape EntityType="TestAppModel.Answer" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TestAppModel.Course" Width="1.5" PointX="3.75" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestAppModel.LecturerAssignment" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestAppModel.Module" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.LecturerAssignment" Width="1.5" PointX="6" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.Module" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TestAppModel.ModuleCourse" Width="1.5" PointX="9" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestAppModel.Question" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.Question" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TestAppModel.Result" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestAppModel.StudentAssignment" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.StudentAssignment" Width="1.5" PointX="6" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TestAppModel.Test" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestAppModel.User" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestAppModel.User" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
         <AssociationConnector Association="TestAppModel.FK__Answer__Question__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="TestAppModel.FK__Answer__TestID__5070F446" ManuallyRouted="false" />
         <AssociationConnector Association="TestAppModel.FK__Answer__Username__52593CB8" ManuallyRouted="false" />

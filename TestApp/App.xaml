@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TestApp"
-             StartupUri="CreateTestWindow.xaml">
-            <!--StartupUri="LoginWindow.xaml">-->
+            StartupUri="LoginWindow.xaml">
+             <!--StartupUri="CreateTestWindow.xaml">-->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

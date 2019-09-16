@@ -15,8 +15,8 @@ namespace TestApp
     public partial class Answer
     {
         public int AnswerID { get; set; }
-        public Nullable<int> TestID { get; set; }
-        public Nullable<int> QuestionID { get; set; }
+        public int TestID { get; set; }
+        public int QuestionID { get; set; }
         public string Username { get; set; }
         public int AttemptNumber { get; set; }
         public int UserAnswer { get; set; }

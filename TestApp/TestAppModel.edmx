@@ -10,9 +10,9 @@
             <PropertyRef Name="AnswerID" />
           </Key>
           <Property Name="AnswerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TestID" Type="int" />
-          <Property Name="QuestionID" Type="int" />
-          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="TestID" Type="int" Nullable="false" />
+          <Property Name="QuestionID" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AttemptNumber" Type="int" Nullable="false" />
           <Property Name="UserAnswer" Type="int" Nullable="false" />
         </EntityType>
@@ -21,7 +21,7 @@
             <PropertyRef Name="CourseID" />
           </Key>
           <Property Name="CourseID" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="LecturerAssignment">
           <Key>
@@ -51,7 +51,7 @@
             <PropertyRef Name="QuestionID" />
           </Key>
           <Property Name="QuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TestID" Type="int" />
+          <Property Name="TestID" Type="int" Nullable="false" />
           <Property Name="QuestionText" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Answer1" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Answer2" Type="varchar" MaxLength="100" Nullable="false" />
@@ -82,9 +82,10 @@
             <PropertyRef Name="TestID" />
           </Key>
           <Property Name="TestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Username" Type="varchar" MaxLength="50" />
-          <Property Name="ModuleID" Type="varchar" MaxLength="10" />
-          <Property Name="DueDate" Type="datetime" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModuleID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DueDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -95,10 +96,10 @@
           <Property Name="FirstName" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Surname" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="UserType" Type="int" Nullable="false" />
-          <Property Name="UniversityIdentification" Type="varchar" MaxLength="15" />
+          <Property Name="UniversityIdentification" Type="varchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <Association Name="FK__Answer__Question__5165187F">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
@@ -110,7 +111,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Answer__TestID__5070F446">
-          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Test">
@@ -122,7 +123,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Answer__Username__52593CB8">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -182,7 +183,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Question__TestID__4D94879B">
-          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
           <End Role="Question" Type="Self.Question" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Test">
@@ -242,7 +243,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Test__ModuleID__4AB81AF0">
-          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
           <End Role="Test" Type="Self.Test" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Module">
@@ -254,7 +255,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Test__Username__49C3F6B7">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Test" Type="Self.Test" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -343,9 +344,9 @@
             <PropertyRef Name="AnswerID" />
           </Key>
           <Property Name="AnswerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TestID" Type="Int32" />
-          <Property Name="QuestionID" Type="Int32" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TestID" Type="Int32" Nullable="false" />
+          <Property Name="QuestionID" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AttemptNumber" Type="Int32" Nullable="false" />
           <Property Name="UserAnswer" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Question" Relationship="Self.FK__Answer__Question__5165187F" FromRole="Answer" ToRole="Question" />
@@ -357,7 +358,7 @@
             <PropertyRef Name="CourseID" />
           </Key>
           <Property Name="CourseID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ModuleCourses" Relationship="Self.FK__ModuleCou__Cours__3F466844" FromRole="Course" ToRole="ModuleCourse" />
           <NavigationProperty Name="StudentAssignments" Relationship="Self.FK__StudentAs__Cours__4316F928" FromRole="Course" ToRole="StudentAssignment" />
         </EntityType>
@@ -396,7 +397,7 @@
             <PropertyRef Name="QuestionID" />
           </Key>
           <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TestID" Type="Int32" />
+          <Property Name="TestID" Type="Int32" Nullable="false" />
           <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Answer1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Answer2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -433,9 +434,10 @@
             <PropertyRef Name="TestID" />
           </Key>
           <Property Name="TestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ModuleID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModuleID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__TestID__5070F446" FromRole="Test" ToRole="Answer" />
           <NavigationProperty Name="Module" Relationship="Self.FK__Test__ModuleID__4AB81AF0" FromRole="Test" ToRole="Module" />
           <NavigationProperty Name="Questions" Relationship="Self.FK__Question__TestID__4D94879B" FromRole="Test" ToRole="Question" />
@@ -451,7 +453,7 @@
           <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserType" Type="Int32" Nullable="false" />
-          <Property Name="UniversityIdentification" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="UniversityIdentification" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__Username__52593CB8" FromRole="User" ToRole="Answer" />
           <NavigationProperty Name="LecturerAssignments" Relationship="Self.FK__LecturerA__Usern__45F365D3" FromRole="User" ToRole="LecturerAssignment" />
           <NavigationProperty Name="Results" Relationship="Self.FK__Result__Username__5629CD9C" FromRole="User" ToRole="Result" />
@@ -459,7 +461,7 @@
           <NavigationProperty Name="Tests" Relationship="Self.FK__Test__Username__49C3F6B7" FromRole="User" ToRole="Test" />
         </EntityType>
         <Association Name="FK__Answer__Question__5165187F">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
@@ -471,7 +473,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Answer__TestID__5070F446">
-          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Test">
@@ -483,7 +485,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Answer__Username__52593CB8">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -555,7 +557,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Test__ModuleID__4AB81AF0">
-          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
           <End Role="Test" Type="Self.Test" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Module">
@@ -567,7 +569,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Question__TestID__4D94879B">
-          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
           <End Role="Question" Type="Self.Question" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Test">
@@ -615,7 +617,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Test__Username__49C3F6B7">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Test" Type="Self.Test" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -786,6 +788,7 @@
                 <ScalarProperty Name="TestID" ColumnName="TestID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="DueDate" ColumnName="DueDate" />
               </MappingFragment>
             </EntityTypeMapping>
