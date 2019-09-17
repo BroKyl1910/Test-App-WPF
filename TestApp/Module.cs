@@ -34,7 +34,7 @@ namespace TestApp
 
         public override string ToString()
         {
-            return ModuleID+" - "+ModuleName;
+            return ModuleID + " - " + ModuleName;
         }
     }
 }

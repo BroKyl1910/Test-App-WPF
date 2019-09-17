@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TestAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TestAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Answer">
           <Key>
             <PropertyRef Name="AnswerID" />
@@ -15,6 +15,7 @@
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AttemptNumber" Type="int" Nullable="false" />
           <Property Name="UserAnswer" Type="int" Nullable="false" />
+          <Property Name="Correct" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -334,8 +335,7 @@
             <End Role="Test" EntitySet="Test" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TestAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -352,6 +352,7 @@
           <NavigationProperty Name="Question" Relationship="Self.FK__Answer__Question__5165187F" FromRole="Answer" ToRole="Question" />
           <NavigationProperty Name="Test" Relationship="Self.FK__Answer__TestID__5070F446" FromRole="Answer" ToRole="Test" />
           <NavigationProperty Name="User" Relationship="Self.FK__Answer__Username__52593CB8" FromRole="Answer" ToRole="User" />
+          <Property Name="Correct" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -705,6 +706,7 @@
           <EntitySetMapping Name="Answers">
             <EntityTypeMapping TypeName="TestAppModel.Answer">
               <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="Correct" ColumnName="Correct" />
                 <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
                 <ScalarProperty Name="TestID" ColumnName="TestID" />
                 <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />

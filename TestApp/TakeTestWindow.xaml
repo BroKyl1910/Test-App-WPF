@@ -25,11 +25,11 @@
         <DockPanel Margin="16,153,16,10">
             <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C">
                 <Grid Margin="0,0,0,0">
-                    <TextBlock x:Name="lblTestTitle" Text="Test Title - Created By" TextAlignment="Left"  HorizontalAlignment="Left" Height="35" Margin="23,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" FontSize="20" materialDesign:HintAssist.Hint="Title" Foreground="#FFFFFFFF"/>
-                    <TextBlock x:Name="lblModule" Text="Module" Margin="312,39,238,0" VerticalAlignment="Top" FontSize="20" materialDesign:HintAssist.Hint="Module" Height="35" Foreground="#FFFFFFFF"/>
-                    <TextBlock x:Name="lblDueDate" Text="Due Date" TextAlignment="Right" Margin="595,39,29,0" VerticalAlignment="Top" FontSize="20" materialDesign:HintAssist.Hint="Due Date" Height="35" Foreground="#FFFFFFFF"/>
+                    <TextBlock x:Name="lblTestTitle" Text="Test Title - Created By" TextAlignment="Left"  HorizontalAlignment="Left" Height="Auto" Margin="23,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="749" FontSize="28" materialDesign:HintAssist.Hint="Title" Foreground="#FFFFFFFF"/>
+                    <TextBlock x:Name="lblModule" Text="Module" Margin="23,59,29,0" VerticalAlignment="Top" FontSize="13" materialDesign:HintAssist.Hint="Module" Height="Auto" Foreground="#FFFFFFFF"/>
+                    <TextBlock x:Name="lblDueDate" Text="Due Date" TextAlignment="Left" Margin="23,80,29,0" VerticalAlignment="Top" FontSize="13" materialDesign:HintAssist.Hint="Due Date" Height="Auto" Foreground="#FFFFFFFF"/>
 
-                    <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C" Margin="23,111,29,134">
+                    <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C" Margin="23,134,29,110">
                         <Grid Margin="0,0,0,0">
                             <TextBlock x:Name="lblQuestionNumber" HorizontalAlignment="Left" FontSize="28" Margin="23,20,0,0" TextWrapping="Wrap" Text="Question 1" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
                             <TextBlock x:Name="lblQuestion" FontSize="20" Height="Auto" Margin="23,72,23,0" TextWrapping="Wrap" Text="Question..." VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
@@ -40,13 +40,13 @@
                             <TextBlock x:Name="lblA" HorizontalAlignment="Left" Height="23" Margin="82,176,0,0" TextWrapping="Wrap" Text="Answer A..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
                             <TextBlock x:Name="lblB" HorizontalAlignment="Left" Height="23" Margin="82,224,0,0" TextWrapping="Wrap" Text="Answer B..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
                             <TextBlock x:Name="lblC" HorizontalAlignment="Left" Height="23" Margin="82,271,0,0" TextWrapping="Wrap" Text="Answer C..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
-                            <Button x:Name="btnNext" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" />
-                            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnPrev" Content="Prev" Margin="551,364,103,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
+                            <Button x:Name="btnNext" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnNext_Click" />
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnPrev" Content="Prev" Margin="551,364,103,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnPrev_Click"/>
                             <Button x:Name="btnSaveQuestion" Content="Save" Margin="644,20,10,354" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="BtnSaveQuestion_Click"/>
 
                         </Grid>
                     </Border>
-                    <Button x:Name="btnSaveTest" Content="Save and Finish" Margin="633,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True"/>
+                    <Button x:Name="btnSaveTest" Content="Save and Finish" Margin="633,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnSaveTest_Click"/>
                     <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnCancel" Content="Cancel" Margin="540,611,168,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
 
                 </Grid>

@@ -20,6 +20,7 @@ namespace TestApp
         public string Username { get; set; }
         public int AttemptNumber { get; set; }
         public int UserAnswer { get; set; }
+        public bool Correct { get; set; }
     
         public virtual Question Question { get; set; }
         public virtual Test Test { get; set; }
