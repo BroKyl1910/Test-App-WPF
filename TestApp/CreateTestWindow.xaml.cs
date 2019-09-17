@@ -27,10 +27,10 @@ namespace TestApp
         int questionIndex;
         RadioButton[] answerRadioButtons;
 
-        public CreateTestWindow(User lecturer)
+        public CreateTestWindow(AppLecturer lecturer)
         {
             InitializeComponent();
-            this.lecturer = lecturer;
+            this.lecturer = db.Users.First(u=> u.Username.Equals(lecturer.Username));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -242,13 +242,21 @@ namespace TestApp
         {
             if(ValidateQuestionForm() && ValidateTestForm())
             {
-                test.Questions = questions;
                 test.Username = lecturer.Username;
                 test.ModuleID = ((Module)cmbModule.SelectedItem).ModuleID;
                 test.DueDate = (DateTime) dtpDueDate.SelectedDate;
+                test.Title = txtTestTitle.Text;
                 db.Tests.Add(test);
 
                 db.SaveChanges();
+
+                foreach(Question q in questions)
+                {
+                    q.TestID = test.TestID;
+                    test.Questions.Add(q);
+                }
+                db.SaveChanges();
+
                 MessageBox.Show("Saved");
             }
         }

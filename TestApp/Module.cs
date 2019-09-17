@@ -31,5 +31,10 @@ namespace TestApp
         public virtual ICollection<ModuleCourse> ModuleCourses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Test> Tests { get; set; }
+
+        public override string ToString()
+        {
+            return ModuleID+" - "+ModuleName;
+        }
     }
 }

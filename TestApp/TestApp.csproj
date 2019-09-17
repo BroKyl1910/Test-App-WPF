@@ -121,6 +121,9 @@
     <Compile Include="StudentAssignment.cs">
       <DependentUpon>TestAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TakeTestWindow.xaml.cs">
+      <DependentUpon>TakeTestWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Test.cs">
       <DependentUpon>TestAppModel.tt</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TakeTestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -200,7 +207,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

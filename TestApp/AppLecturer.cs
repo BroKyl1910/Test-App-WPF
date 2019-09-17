@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestApp
 {
-    class AppLecturer : AppUser
+    public class AppLecturer : AppUser
     {
         public string LecturerCode { get; set; }
 

@@ -93,7 +93,7 @@ namespace TestApp
 
             //Password must be at least 8 characters and have 1 uppercase and 1 lowercase and 1 digit
             char[] passwordChars = txtPassword.Password.ToCharArray();
-            if (!(passwordChars.Length >= 8 && passwordChars.Where(c => Char.IsUpper(c)).ToList().Count >= 1 && passwordChars.Where(c => Char.IsLower(c)).ToList().Count >= 1 && passwordChars.Where(c => Char.IsDigit(c)).ToList().Count >= 1))
+            if (!(passwordChars.Length >= 8 && passwordChars.Where(c => char.IsUpper(c)).ToList().Count >= 1 && passwordChars.Where(c => char.IsLower(c)).ToList().Count >= 1 && passwordChars.Where(c => char.IsDigit(c)).ToList().Count >= 1))
             {
                 crdError.Visibility = Visibility.Visible;
                 lblError.Text = "Password must be at least 8 characters and contain 1 uppercase character, 1 lowercase character and 1 digit";

@@ -1,3 +1,4 @@
+-- VCDNSTDST01PC03
 CREATE DATABASE TestApp;
 go
 
@@ -83,5 +84,3 @@ CREATE TABLE Result(
 	UserResult INT NOT NULL,
 	ResultPercentage DECIMAL NOT NULL
 );
-
-INSERT INTO [User] VALUES ("")

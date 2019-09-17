@@ -70,7 +70,7 @@ namespace TestApp
                 //Create AppUser so that I can control what data gets passed around, I don't want the user's password being in the object which is passed between windows
                 if(user.UserType == (int)UserType.LECTURER)
                 {
-                    new MainWindow(new AppLecturer(user.UniversityIdentification, user.FirstName, user.Surname, user.Username, UserType.LECTURER)).Show();
+                    new CreateTestWindow(new AppLecturer(user.UniversityIdentification, user.FirstName, user.Surname, user.Username, UserType.LECTURER)).Show();
                     this.Hide();
                 }
                 else
