@@ -46,8 +46,8 @@
 
                         </Grid>
                     </Border>
-                    <Button Style="{StaticResource FlatButton}" x:Name="btnSaveTest" Content="Save and Finish" Margin="633,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnSaveTest_Click"/>
-                    <Button Style="{StaticResource DarkButton}" x:Name="btnCancel" Content="Cancel" Margin="540,611,168,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
+                    <Button Style="{StaticResource FlatButton}" x:Name="btnSaveTest" Content="Finish" Margin="662,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnSaveTest_Click"/>
+                    <Button Style="{StaticResource DarkButton}" x:Name="btnCancel" Content="Cancel" Margin="569,611,139,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
 
                 </Grid>
             </Border>
