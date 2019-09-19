@@ -146,6 +146,12 @@
       <DependentUpon>TestAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserType.cs" />
+    <Compile Include="ViewMemoWindow.xaml.cs">
+      <DependentUpon>ViewMemoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTestsWindow.xaml.cs">
+      <DependentUpon>ViewTestsWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="CreateTestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,6 +177,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TakeTestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewMemoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewTestsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -63,19 +63,19 @@ namespace TestApp
             if (user == null)
             {
                 crdError.Visibility = Visibility.Visible;
-                lblError.Text = "Nope";
+                lblError.Text = "Invalid username or password";
             }
             else
             {
                 //Create AppUser so that I can control what data gets passed around, I don't want the user's password being in the object which is passed between windows
                 if(user.UserType == (int)UserType.LECTURER)
                 {
-                    new CreateTestWindow(new AppLecturer(user.UniversityIdentification, user.FirstName, user.Surname, user.Username, UserType.LECTURER)).Show();
+                    new MainWindow(user).Show();
                     this.Hide();
                 }
                 else
                 {
-                    new MainWindow(new AppStudent(user.UniversityIdentification, user.FirstName, user.Surname, user.Username, UserType.STUDENT)).Show();
+                    new MainWindow(user).Show();
                     this.Hide();
                 }
             }

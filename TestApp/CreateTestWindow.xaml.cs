@@ -27,10 +27,10 @@ namespace TestApp
         int questionIndex;
         RadioButton[] answerRadioButtons;
 
-        public CreateTestWindow(AppLecturer lecturer)
+        public CreateTestWindow(User lecturer)
         {
             InitializeComponent();
-            this.lecturer = db.Users.First(u=> u.Username.Equals(lecturer.Username));
+            this.lecturer = lecturer;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -259,6 +259,18 @@ namespace TestApp
 
                 MessageBox.Show("Saved");
             }
+        }
+
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow(lecturer).Show();
+            this.Hide();
+        }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            new LoginWindow().Show();
+            this.Hide();
         }
     }
 }

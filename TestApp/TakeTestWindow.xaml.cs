@@ -20,7 +20,7 @@ namespace TestApp
     public partial class TakeTestWindow : Window
     {
         TestAppEntities db = new TestAppEntities();
-        User student;
+        User user;
         Test test;
         List<Question> questions;
         int questionIndex;
@@ -28,14 +28,13 @@ namespace TestApp
         RadioButton[] answerRadioButtons;
 
 
-        public TakeTestWindow()
+        public TakeTestWindow(User user, Test test)
         {
             InitializeComponent();
-            test = db.Tests.First();
+
             questions = test.Questions.ToList();
             answerIndices = questions.Select(q => -1).ToArray();
-            student = db.Users.First(u => u.UserType == (int)UserType.STUDENT);
-
+            this.user = user;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -146,14 +145,14 @@ namespace TestApp
             {
                 List<Answer> answers = new List<Answer>();
 
-                int attemptNumber = db.Results.Count(r => r.TestID == test.TestID && r.Username.Equals(student.Username))+1;
+                int attemptNumber = db.Results.Count(r => r.TestID == test.TestID && r.Username.Equals(user.Username))+1;
 
                 for (int i = 0; i < questions.Count; i++)
                 {
                     Answer answer = new Answer();
                     answer.AttemptNumber = attemptNumber;
                     answer.QuestionID = questions[i].QuestionID;
-                    answer.Username = student.Username;
+                    answer.Username = user.Username;
                     answer.TestID = test.TestID;
                     answer.UserAnswer = answerIndices[i];
                     answer.Correct = answerIndices[i] == questions[i].CorrectAnswer;
@@ -163,11 +162,11 @@ namespace TestApp
 
                 db.SaveChanges();
 
-                int numCorrect = db.Answers.Count(a => a.TestID == test.TestID && a.Username.Equals(student.Username) && a.AttemptNumber == attemptNumber && a.Correct);
+                int numCorrect = db.Answers.Count(a => a.TestID == test.TestID && a.Username.Equals(user.Username) && a.AttemptNumber == attemptNumber && a.Correct);
 
                 Result result = new Result();
                 result.TestID = test.TestID;
-                result.Username = student.Username;
+                result.Username = user.Username;
                 result.AttemptNumber = attemptNumber;
                 result.UserResult = numCorrect;
                 result.ResultPercentage = (decimal) ((double) numCorrect) / questions.Count * 100;
@@ -182,6 +181,33 @@ namespace TestApp
 
 
             }
+        }
+
+        private void LblA_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            rdioA.IsChecked = true;
+        }
+
+        private void LblB_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            rdioB.IsChecked = true;
+        }
+
+        private void LblC_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            rdioC.IsChecked = true;
+        }
+
+        private void BtnTests_Click(object sender, RoutedEventArgs e)
+        {
+            new ViewTestsWindow(user).Show();
+            this.Hide();
+        }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            new LoginWindow().Show();
+            this.Hide();
         }
     }
 }

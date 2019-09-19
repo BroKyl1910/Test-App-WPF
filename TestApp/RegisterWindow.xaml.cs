@@ -58,10 +58,36 @@ namespace TestApp
 
                 db.Users.Add(user);
                 db.SaveChanges();
+                
+                //Student
+                if(user.UserType == 0)
+                {
+                    StudentAssignment sa = new StudentAssignment();
+                    sa.CourseID = ((Course)cmbCourseModule.SelectedItem).CourseID;
+                    sa.Username = user.Username;
+
+                    db.StudentAssignments.Add(sa);
+                }
+                else
+                {
+                    List<Module> modules = (List<Module>) cmbCourseModule.SelectedItems;
+                    foreach (Module module in modules)
+                    {
+                        LecturerAssignment la = new LecturerAssignment();
+                        la.ModuleID= module.ModuleID;
+                        la.Username = user.Username;
+                        db.LecturerAssignments.Add(la);
+                    }
+
+                }
+
+                db.SaveChanges();
 
                 MessageBox.Show("User Registered");
 
                 //Show next page
+                new MainWindow(user).Show();
+                this.Hide();
             }
         }
 
@@ -114,7 +140,7 @@ namespace TestApp
 
         private bool AllFieldsFilled()
         {
-            return !(txtFirstName.Text.Equals("") || txtSurname.Text.Equals("") || txtUsername.Text.Equals("") || txtPassword.Password.Equals("") || txtConfirmPassword.Password.Equals("") || cmbUserType.SelectedIndex == -1 || txtIdentification.Text.Equals(""));
+            return !(txtFirstName.Text.Equals("") || txtSurname.Text.Equals("") || txtUsername.Text.Equals("") || txtPassword.Password.Equals("") || txtConfirmPassword.Password.Equals("") || cmbUserType.SelectedIndex == -1 || txtIdentification.Text.Equals("") || cmbCourseModule.SelectedIndex==-1);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -130,9 +156,28 @@ namespace TestApp
             if(cmbUserType.SelectedIndex == 0)
             {
                 lblIdentificationType.Text = "Student Number";
-            } else if (cmbUserType.SelectedIndex == 1)
+                lblCourseModule.Text = "Course";
+
+                cmbCourseModule.Items.Clear();
+                foreach(Course course in db.Courses.OrderBy(c => c.CourseID))
+                {
+                    cmbCourseModule.Items.Add(course);
+                }
+                cmbCourseModule.SelectionMode = SelectionMode.Single;
+
+            }
+            else if (cmbUserType.SelectedIndex == 1)
             {
                 lblIdentificationType.Text = "Lecturer Code";
+                lblCourseModule.Text = "Modules";
+
+                cmbCourseModule.Items.Clear();
+                foreach (Module module in db.Modules.OrderBy(m => m.ModuleID))
+                {
+                    cmbCourseModule.Items.Add(module);
+                }
+                cmbCourseModule.SelectionMode = SelectionMode.Multiple;
+
             }
         }
 

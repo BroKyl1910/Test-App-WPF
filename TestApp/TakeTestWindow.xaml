@@ -13,13 +13,12 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{StaticResource BackgroundGradient}"
-        FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" Loaded="Window_Loaded">
+        FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid x:Name="grdMain" Margin="0,0,0,0">
         <DockPanel x:Name="pnlNavigation" HorizontalAlignment="Left" VerticalAlignment="Top" Height="53" Width="833"  Background="{StaticResource PrimaryColorTransparent}">
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnHome" Content="Home" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White"/>
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnTests" Content="Tests" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnResults" Content="Results" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnLogout" Content="Log Out" HorizontalAlignment="Right" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" />
+            <Button x:Name="btnHome" Style="{StaticResource FlatButton}" Content="Home" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White"/>
+            <Button x:Name="btnTests" Style="{StaticResource FlatButton}" Content="Tests" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnTests_Click"/>
+            <Button x:Name="btnLogout" Style="{StaticResource FlatButton}" Content="Log Out" HorizontalAlignment="Right" Width="150" Margin="0,0,0,0" Background="{StaticResource Transparent}" Foreground="White" Click="BtnLogout_Click" />
         </DockPanel>
         <TextBlock VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="25,79,632,0" TextAlignment="Center" Foreground="#DDFFFFFF"><Run Text="Test"/></TextBlock>
         <DockPanel Margin="16,153,16,10">
@@ -37,17 +36,17 @@
                             <RadioButton x:Name="rdioA" GroupName="grpCorrectAnswer" Content="A." HorizontalAlignment="Left" Margin="32,174,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
                             <RadioButton x:Name="rdioB" GroupName="grpCorrectAnswer" Content="B." HorizontalAlignment="Left" Margin="32,222,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
                             <RadioButton x:Name="rdioC" GroupName="grpCorrectAnswer" Content="C." HorizontalAlignment="Left" Margin="32,269,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
-                            <TextBlock x:Name="lblA" HorizontalAlignment="Left" Height="23" Margin="82,176,0,0" TextWrapping="Wrap" Text="Answer A..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
-                            <TextBlock x:Name="lblB" HorizontalAlignment="Left" Height="23" Margin="82,224,0,0" TextWrapping="Wrap" Text="Answer B..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
-                            <TextBlock x:Name="lblC" HorizontalAlignment="Left" Height="23" Margin="82,271,0,0" TextWrapping="Wrap" Text="Answer C..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
-                            <Button x:Name="btnNext" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnNext_Click" />
-                            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnPrev" Content="Prev" Margin="551,364,103,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnPrev_Click"/>
-                            <Button x:Name="btnSaveQuestion" Content="Save" Margin="644,20,10,354" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="BtnSaveQuestion_Click"/>
+                            <TextBlock x:Name="lblA" HorizontalAlignment="Left" Height="23" Margin="82,176,0,0" TextWrapping="Wrap" Text="Answer A..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF" MouseUp="LblA_MouseUp" />
+                            <TextBlock x:Name="lblB" HorizontalAlignment="Left" Height="23" Margin="82,224,0,0" TextWrapping="Wrap" Text="Answer B..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF" MouseUp="LblB_MouseUp"/>
+                            <TextBlock x:Name="lblC" HorizontalAlignment="Left" Height="23" Margin="82,271,0,0" TextWrapping="Wrap" Text="Answer C..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF" MouseUp="LblC_MouseUp"/>
+                            <Button x:Name="btnNext"  Style="{StaticResource DarkButton}" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnNext_Click" />
+                            <Button x:Name="btnPrev" Style="{StaticResource FlatButton}" Content="Prev" Margin="551,364,103,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnPrev_Click"/>
+                            <Button x:Name="btnSaveQuestion" Style="{StaticResource DarkButton}" Content="Save" Margin="644,20,10,354" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="BtnSaveQuestion_Click"/>
 
                         </Grid>
                     </Border>
-                    <Button x:Name="btnSaveTest" Content="Save and Finish" Margin="633,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnSaveTest_Click"/>
-                    <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnCancel" Content="Cancel" Margin="540,611,168,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
+                    <Button x:Name="btnSaveTest"  Style="{StaticResource DarkButton}" Content="Save and Finish" Margin="633,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnSaveTest_Click"/>
+                    <Button Style="{StaticResource FlatButton}" x:Name="btnCancel" Content="Cancel" Margin="540,611,168,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
 
                 </Grid>
             </Border>

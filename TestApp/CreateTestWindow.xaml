@@ -13,13 +13,12 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{StaticResource BackgroundGradient}"
-        FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" Loaded="Window_Loaded">
+        FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid x:Name="grdMain" Margin="0,0,0,0">
         <DockPanel x:Name="pnlNavigation" HorizontalAlignment="Left" VerticalAlignment="Top" Height="53" Width="833"  Background="{StaticResource PrimaryColorTransparent}">
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnHome" Content="Home" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White"/>
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnTests" Content="Tests" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnResults" Content="Results" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
-            <Button Style="{DynamicResource MaterialDesignFlatButton}" x:Name="btnLogout" Content="Log Out" HorizontalAlignment="Right" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" />
+            <Button x:Name="btnHome" Style="{StaticResource FlatButton}" Content="Home" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="BtnHome_Click"/>
+            <Button x:Name="btnTests" Style="{StaticResource FlatButton}" Content="Tests" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" />
+            <Button x:Name="btnLogout" Style="{StaticResource FlatButton}" Content="Log Out" HorizontalAlignment="Right" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnLogout_Click" />
         </DockPanel>
         <TextBlock VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="25,79,632,0" TextAlignment="Center" Foreground="#DDFFFFFF"><Run Text="Create"/></TextBlock>
         <DockPanel Margin="16,153,16,10">

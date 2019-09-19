@@ -19,27 +19,40 @@ namespace TestApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        object user;
-        bool isLecturer;
+        User user;
+     
 
-        public MainWindow(object user)
+        public MainWindow(User user)
         {
             InitializeComponent();
             this.user = user;
-            if(user.GetType() == typeof(AppLecturer))
-            {
-                isLecturer = true;
-            }
+
+
+            lblWelcome.Text = "Welcome, " + user.FirstName + " " + user.Surname;
         }
 
         private void BtnTests_Click(object sender, RoutedEventArgs e)
         {
-
+            if (user.UserType == (int)UserType.LECTURER)
+            {
+                new CreateTestWindow(user).Show();
+            }
+            else
+            {
+                new ViewTestsWindow(user).Show();
+            }
+            this.Hide();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            new LoginWindow().Show();
         }
     }
 }
