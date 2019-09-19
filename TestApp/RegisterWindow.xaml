@@ -41,8 +41,8 @@
                     <TextBlock x:Name="lblIdentificationType" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,450,0,0" Foreground="#DDFFFFFF"><Run Text="Identification"/></TextBlock>
                     <TextBox x:Name="txtIdentification" TabIndex="7" HorizontalAlignment="Left" Height="36" Margin="397,436,0,0" VerticalAlignment="Top" Width="337" FontSize="16" Foreground="#DDFFFFFF"/>
 
-                    <Button x:Name="btnRegister" Content="Register" Margin="697,619,10,30" Height="Auto" Background="#33000000" Foreground="White" IsDefault="True" Click="BtnRegister_Click"/>
-                    <Button x:Name="btnCancel" Content="Cancel" Margin="599,619,108,30" Height="Auto" Background="#00000000" Foreground="White" Click="BtnCancel_Click"/>
+                    <Button x:Name="btnRegister" Style="{StaticResource DarkButton}" Content="Register" Margin="697,619,10,30" Height="Auto" Background="#33000000" Foreground="White" IsDefault="True" Click="BtnRegister_Click"/>
+                    <Button x:Name="btnCancel" Style="{StaticResource FlatButton}" Content="Cancel" Margin="599,619,108,30" Height="Auto" Background="#00000000" Foreground="White" Click="BtnCancel_Click"/>
                     <ProgressBar x:Name="prgLoading" Style="{DynamicResource MaterialDesignCircularProgressBar}" Foreground="{StaticResource AccentBlueColor}" HorizontalAlignment="Left" Height="4" Margin="670,432,0,0" VerticalAlignment="Top" Width="28" IsIndeterminate="True" Visibility="Hidden"/>
                     <TextBlock x:Name="lblCourseModule" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,513,0,0" Foreground="#DDFFFFFF"><Run Text="Course or Modules"/></TextBlock>
                     <ListView x:Name="cmbCourseModule" TabIndex="7" HorizontalAlignment="Left" Height="90" Margin="397,499,0,0" VerticalAlignment="Top" Width="337" FontSize="16" Foreground="#DDFFFFFF" />

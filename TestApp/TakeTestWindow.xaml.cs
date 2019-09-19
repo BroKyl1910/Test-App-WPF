@@ -32,6 +32,7 @@ namespace TestApp
         {
             InitializeComponent();
 
+            this.test = test;
             questions = test.Questions.ToList();
             answerIndices = questions.Select(q => -1).ToArray();
             this.user = user;
@@ -169,15 +170,14 @@ namespace TestApp
                 result.Username = user.Username;
                 result.AttemptNumber = attemptNumber;
                 result.UserResult = numCorrect;
-                result.ResultPercentage = (decimal) ((double) numCorrect) / questions.Count * 100;
+                result.ResultPercentage = (decimal) Math.Round(((double) numCorrect) / questions.Count * 100, 3);
 
                 db.Results.Add(result);
 
                 db.SaveChanges();
 
-
-                crdError.Visibility = Visibility.Visible;
-                lblError.Text = "Result - "+numCorrect+"/"+questions.Count;
+                new ViewMemoWindow(user, test).Show();
+                this.Hide();
 
 
             }
@@ -208,6 +208,11 @@ namespace TestApp
         {
             new LoginWindow().Show();
             this.Hide();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

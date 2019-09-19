@@ -258,6 +258,9 @@ namespace TestApp
                 db.SaveChanges();
 
                 MessageBox.Show("Saved");
+
+                new MainWindow(lecturer).Show();
+                this.Hide();
             }
         }
 
@@ -271,6 +274,11 @@ namespace TestApp
         {
             new LoginWindow().Show();
             this.Hide();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

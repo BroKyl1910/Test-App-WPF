@@ -175,6 +175,18 @@ namespace TestApp
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
             new LoginWindow().Show();
+            this.Hide();
+        }
+
+        private void BtnTests_Click(object sender, RoutedEventArgs e)
+        {
+            new ViewTestsWindow(student).Show();
+            this.Hide();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

@@ -24,7 +24,7 @@
         <DockPanel Margin="16,153,16,10">
             <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C">
                 <Grid Margin="0,0,0,0">
-                    <TextBlock x:Name="lblWelcome" FontSize="30" Height="Auto" Margin="42,56,542,550" TextAlignment="Left">Welcome</TextBlock>
+                    <TextBlock x:Name="lblWelcome" FontSize="30" Height="Auto" Margin="42,56,44,472" TextAlignment="Left">Welcome</TextBlock>
 
                     
                 </Grid>

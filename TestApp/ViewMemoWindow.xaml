@@ -13,12 +13,12 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{StaticResource BackgroundGradient}"
-        FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+        FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" Closed="Window_Closed">
 
     <Grid x:Name="grdMain" Margin="0,0,0,0">
         <DockPanel x:Name="pnlNavigation" HorizontalAlignment="Left" VerticalAlignment="Top" Height="53" Width="833"  Background="{StaticResource PrimaryColorTransparent}">
-            <Button x:Name="btnHome" Style="{StaticResource FlatButton}" Content="Home" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="BtnHome_Click"/>
-            <Button x:Name="btnTests" Style="{StaticResource FlatButton}" Content="Tests" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnTests_Click"/>
+            <Button x:Name="btnHome" Style="{StaticResource FlatButton}" Content="Home" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnHome_Click"/>
+            <Button x:Name="btnTests" Style="{StaticResource FlatButton}" Content="Tests" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="BtnTests_Click"/>
             <Button x:Name="btnLogout" Style="{StaticResource FlatButton}" Content="Log Out" HorizontalAlignment="Right" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnLogout_Click" />
         </DockPanel>
         <TextBlock VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="25,79,509,0" TextAlignment="Center"><Run Text="Memo"/></TextBlock>

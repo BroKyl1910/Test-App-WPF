@@ -156,7 +156,7 @@ namespace TestApp
         private void BtnViewResult_Click(object sender, RoutedEventArgs e)
         {
             int testID = Convert.ToInt16(((Button)sender).Name.Substring(3));
-            new ViewMemoWindow(user, db.Tests.First(t=>t.TestID==testID));
+            new ViewMemoWindow(user, db.Tests.First(t=>t.TestID==testID)).Show();
             this.Hide();
         }
 
@@ -170,6 +170,11 @@ namespace TestApp
         {
             new LoginWindow().Show();
             this.Hide();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }
