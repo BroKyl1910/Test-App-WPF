@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestApp"
         mc:Ignorable="d"
-         Title="View Forecasts"  Height="835.5" Width="841" 
+         Title="View Tests"  Height="835.5" Width="841" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         TextElement.Foreground="{StaticResource AccentGreyColor}"
         TextElement.FontWeight="Regular"
