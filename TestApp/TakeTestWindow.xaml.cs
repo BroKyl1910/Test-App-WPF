@@ -200,7 +200,7 @@ namespace TestApp
 
         private void BtnTests_Click(object sender, RoutedEventArgs e)
         {
-            new ViewTestsWindow(user).Show();
+            new ViewTestsStudentWindow(user).Show();
             this.Hide();
         }
 
@@ -213,6 +213,12 @@ namespace TestApp
         private void Window_Closed(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            new ViewTestsStudentWindow(user).Show();
+            this.Hide();
         }
     }
 }

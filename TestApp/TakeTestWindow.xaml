@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestApp"
         mc:Ignorable="d"
-        Title="Take Test"  Height="857.5" Width="841" 
+        Title="Take Test"  Height="822.7" Width="841" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -28,7 +28,7 @@
                     <TextBlock x:Name="lblModule" Text="Module" Margin="23,59,29,0" VerticalAlignment="Top" FontSize="13" materialDesign:HintAssist.Hint="Module" Height="Auto" Foreground="#FFFFFFFF"/>
                     <TextBlock x:Name="lblDueDate" Text="Due Date" TextAlignment="Left" Margin="23,80,29,0" VerticalAlignment="Top" FontSize="13" materialDesign:HintAssist.Hint="Due Date" Height="Auto" Foreground="#FFFFFFFF"/>
 
-                    <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C" Margin="23,134,29,110">
+                    <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C" Margin="23,134,28.8,0" Height="393" VerticalAlignment="Top">
                         <Grid Margin="0,0,0,0">
                             <TextBlock x:Name="lblQuestionNumber" HorizontalAlignment="Left" FontSize="28" Margin="23,20,0,0" TextWrapping="Wrap" Text="Question 1" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
                             <TextBlock x:Name="lblQuestion" FontSize="20" Height="Auto" Margin="23,72,23,0" TextWrapping="Wrap" Text="Question..." VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
@@ -39,14 +39,14 @@
                             <TextBlock x:Name="lblA" HorizontalAlignment="Left" Height="23" Margin="82,176,0,0" TextWrapping="Wrap" Text="Answer A..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF" MouseUp="LblA_MouseUp" />
                             <TextBlock x:Name="lblB" HorizontalAlignment="Left" Height="23" Margin="82,224,0,0" TextWrapping="Wrap" Text="Answer B..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF" MouseUp="LblB_MouseUp"/>
                             <TextBlock x:Name="lblC" HorizontalAlignment="Left" Height="23" Margin="82,271,0,0" TextWrapping="Wrap" Text="Answer C..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF" MouseUp="LblC_MouseUp"/>
-                            <Button x:Name="btnNext"  Style="{StaticResource DarkButton}" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnNext_Click" />
-                            <Button x:Name="btnPrev" Style="{StaticResource FlatButton}" Content="Prev" Margin="551,364,103,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnPrev_Click"/>
-                            <Button x:Name="btnSaveQuestion" Style="{StaticResource DarkButton}" Content="Save" Margin="644,20,10,354" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="BtnSaveQuestion_Click"/>
+                            <Button x:Name="btnNext"  Style="{StaticResource DarkButton}" Content="Next" Margin="644,327,10.2,21.2" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnNext_Click" />
+                            <Button x:Name="btnPrev" Style="{StaticResource FlatButton}" Content="Prev" Margin="551,327,103.2,21.2" Background="{StaticResource Transparent}" Foreground="White" Click="BtnPrev_Click"/>
+                            <Button x:Name="btnSaveQuestion" Style="{StaticResource DarkButton}" Content="Save" Margin="644,20,10.2,324.2"  Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="BtnSaveQuestion_Click"/>
 
                         </Grid>
                     </Border>
-                    <Button x:Name="btnSaveTest"  Style="{StaticResource DarkButton}" Content="Finish" Margin="673,611,29,10" Width="auto" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnSaveTest_Click"/>
-                    <Button Style="{StaticResource FlatButton}" x:Name="btnCancel" Content="Cancel" Margin="575,611,133,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White"/>
+                    <Button x:Name="btnSaveTest"  Style="{StaticResource DarkButton}" Content="Finish" Margin="679,560,22.8,26" Width="auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnSaveTest_Click"/>
+                    <Button Style="{StaticResource FlatButton}" x:Name="btnCancel" Content="Cancel" Margin="581,560,126.8,26" Background="{StaticResource Transparent}" Foreground="White" Click="BtnCancel_Click"/>
 
                 </Grid>
             </Border>

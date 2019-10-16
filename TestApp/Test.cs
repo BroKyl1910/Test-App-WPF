@@ -36,5 +36,7 @@ namespace TestApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
         public virtual User User { get; set; }
+
+
     }
 }

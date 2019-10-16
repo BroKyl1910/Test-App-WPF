@@ -35,11 +35,11 @@ namespace TestApp
         {
             if (user.UserType == (int)UserType.LECTURER)
             {
-                new CreateTestWindow(user).Show();
+                new ViewTestsLecturerWindow(user).Show();
             }
             else
             {
-                new ViewTestsWindow(user).Show();
+                new ViewTestsStudentWindow(user).Show();
             }
             this.Hide();
         }

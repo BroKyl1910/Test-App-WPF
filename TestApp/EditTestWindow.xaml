@@ -1,11 +1,11 @@
-﻿<Window x:Class="TestApp.CreateTestWindow"
+﻿<Window x:Class="TestApp.EditTestWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestApp"
         mc:Ignorable="d"
-        Title="Create Test"  Height="822.7" Width="841" 
+        Title="Edit Test"  Height="822.7" Width="841" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -14,13 +14,13 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{StaticResource BackgroundGradient}"
         FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
-    <Grid x:Name="grdMain" Margin="0,0,0,0">
+    <Grid>
         <DockPanel x:Name="pnlNavigation" HorizontalAlignment="Left" VerticalAlignment="Top" Height="53" Width="833"  Background="{StaticResource PrimaryColorTransparent}">
             <Button x:Name="btnHome" Style="{StaticResource FlatButton}" Content="Home" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnHome_Click"/>
             <Button x:Name="btnTests" Style="{StaticResource FlatButton}" Content="Tests" HorizontalAlignment="Left" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" />
             <Button x:Name="btnLogout" Style="{StaticResource FlatButton}" Content="Log Out" HorizontalAlignment="Right" Width="150" Margin="0,0,0,0" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnLogout_Click" />
         </DockPanel>
-        <TextBlock VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="25,79,632,0" TextAlignment="Center" Foreground="#DDFFFFFF"><Run Text="Create"/></TextBlock>
+        <TextBlock VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="25,79,632,0" TextAlignment="Center" Foreground="#DDFFFFFF"><Run Text="Edit"/></TextBlock>
         <DockPanel Margin="16,153,16,10">
             <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C">
                 <Grid Margin="0,0.2,0,0" Height="649" VerticalAlignment="Top">
@@ -39,14 +39,14 @@
                             <TextBox x:Name="txtA" HorizontalAlignment="Left" Height="23" Margin="101,172,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer A..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
                             <TextBox x:Name="txtB" HorizontalAlignment="Left" Height="23" Margin="101,220,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer B..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
                             <TextBox x:Name="txtC" HorizontalAlignment="Left" Height="23" Margin="101,267,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Answer C..." VerticalAlignment="Top" Width="623" Foreground="#DDFFFFFF"/>
-                            <Button Style="{StaticResource DarkButton}" x:Name="btnNext" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnNext_Click"/>
+                            <Button Style="{StaticResource DarkButton}" x:Name="btnNext" Content="Next" Margin="644,364,10,10" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnNext_Click" />
                             <Button Style="{StaticResource DarkButton}" x:Name="btnPrev" Content="Prev" Margin="551,364,103,10" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnPrev_Click"/>
                             <Button Style="{StaticResource FlatButton}" x:Name="btnDelete" Content="Delete" Margin="551,20,103,354" Height="Auto" Background="{StaticResource Transparent}" Foreground="White" Click="BtnDelete_Click"/>
-                            <Button Style="{StaticResource DarkButton}" x:Name="btnSaveQuestion" Content="Save" Margin="644,20,10,354" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="btnSaveQuestion_Click"/>
+                            <Button Style="{StaticResource DarkButton}" x:Name="btnSaveQuestion" Content="Save" Margin="644,20,10,354" Height="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" Click="BtnSaveQuestion_Click"/>
 
                         </Grid>
                     </Border>
-                    <Button Style="{StaticResource FlatButton}" x:Name="btnSaveTest" Content="Finish" Margin="662,582,28.8,39" Width="auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnSaveTest_Click"/>
+                    <Button Style="{StaticResource FlatButton}" x:Name="btnSaveTest" Content="Finish" Margin="662,582,28.8,39" Width="Auto" Background="{StaticResource PrimaryColorTransparent}" Foreground="White" IsDefault="True" Click="BtnSaveTest_Click" />
                     <Button Style="{StaticResource DarkButton}" x:Name="btnCancel" Content="Cancel" Margin="569,582,138.8,39" Background="{StaticResource Transparent}" Foreground="White" Click="BtnCancel_Click"/>
 
                 </Grid>
@@ -58,6 +58,5 @@
                 <TextBlock Name="lblError" TextAlignment="Center" VerticalAlignment="Center" Text="Error: Please select city from list" Foreground="White"></TextBlock>
             </Grid>
         </materialDesign:Card>
-
     </Grid>
 </Window>

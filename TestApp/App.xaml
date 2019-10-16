@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TestApp"
             StartupUri="LoginWindow.xaml">
-             <!--StartupUri="ViewTestsWindow.xaml">-->
+             <!--StartupUri="EditTestWindow.xaml">-->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -91,6 +91,10 @@
                                 <ContentPresenter Name="MyContentPresenter" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.Foreground="{StaticResource AccentGreyColor}"/>
                             </Border>
                             <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#33000000"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter TargetName="MyContentPresenter" Property="TextBlock.Foreground" Value="#7FFFFFFF"/>
                                     <Setter TargetName="border" Property="Background" Value="#FFADADAD"/>

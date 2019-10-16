@@ -45,7 +45,7 @@
                     <Button x:Name="btnCancel" Style="{StaticResource FlatButton}" Content="Cancel" Margin="599,619,108,30" Height="Auto" Background="#00000000" Foreground="White" Click="BtnCancel_Click"/>
                     <ProgressBar x:Name="prgLoading" Style="{DynamicResource MaterialDesignCircularProgressBar}" Foreground="{StaticResource AccentBlueColor}" HorizontalAlignment="Left" Height="4" Margin="670,432,0,0" VerticalAlignment="Top" Width="28" IsIndeterminate="True" Visibility="Hidden"/>
                     <TextBlock x:Name="lblCourseModule" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Height="Auto" Width="Auto" Margin="69,513,0,0" Foreground="#DDFFFFFF"><Run Text="Course or Modules"/></TextBlock>
-                    <ListView x:Name="cmbCourseModule" TabIndex="7" HorizontalAlignment="Left" Height="90" Margin="397,499,0,0" VerticalAlignment="Top" Width="337" FontSize="16" Foreground="#DDFFFFFF" />
+                    <ListBox x:Name="cmbCourseModule" TabIndex="7" HorizontalAlignment="Left" Height="90" Margin="397,499,0,0" VerticalAlignment="Top" Width="337" FontSize="16" Foreground="#DDFFFFFF" />
 
                 </Grid>
             </Border>

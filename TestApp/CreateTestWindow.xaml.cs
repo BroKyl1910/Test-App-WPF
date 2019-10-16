@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+ 
 namespace TestApp
 {
     /// <summary>
@@ -82,14 +82,6 @@ namespace TestApp
 
                 UpdateNextPrevButtons();
             }
-        }
-
-        private void SaveQuestion(Question question)
-        {
-            
-
-
-            
         }
 
         private void UpdateNextPrevButtons()
@@ -279,6 +271,12 @@ namespace TestApp
         private void Window_Closed(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow(lecturer).Show();
+            this.Hide();
         }
     }
 }

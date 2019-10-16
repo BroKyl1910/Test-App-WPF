@@ -99,6 +99,9 @@
     <Compile Include="CreateTestWindow.xaml.cs">
       <DependentUpon>CreateTestWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditTestWindow.xaml.cs">
+      <DependentUpon>EditTestWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LecturerAssignment.cs">
       <DependentUpon>TestAppModel.tt</DependentUpon>
     </Compile>
@@ -120,6 +123,7 @@
     <Compile Include="Result.cs">
       <DependentUpon>TestAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ResultsViewModel.cs" />
     <Compile Include="StudentAssignment.cs">
       <DependentUpon>TestAppModel.tt</DependentUpon>
     </Compile>
@@ -151,10 +155,20 @@
     <Compile Include="ViewMemoWindow.xaml.cs">
       <DependentUpon>ViewMemoWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewTestsWindow.xaml.cs">
-      <DependentUpon>ViewTestsWindow.xaml</DependentUpon>
+    <Compile Include="ViewTestLecturerWindow.xaml.cs">
+      <DependentUpon>ViewTestLecturerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTestsLecturerWindow.xaml.cs">
+      <DependentUpon>ViewTestsLecturerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTestsStudentWindow.xaml.cs">
+      <DependentUpon>ViewTestsStudentWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="CreateTestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,9 +200,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewTestsWindow.xaml">
+    <Page Include="ViewTestLecturerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewTestsLecturerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewTestsStudentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

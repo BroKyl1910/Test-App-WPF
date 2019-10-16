@@ -1,6 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +17,14 @@ using System.Windows.Shapes;
 namespace TestApp
 {
     /// <summary>
-    /// Interaction logic for ViewTestsWindow.xaml
+    /// Interaction logic for ViewTestsLecturerWindow.xaml
     /// </summary>
-    public partial class ViewTestsWindow : Window
+    public partial class ViewTestsLecturerWindow : Window
     {
         TestAppEntities db = new TestAppEntities();
         User user;
 
-        public ViewTestsWindow(User user)
+        public ViewTestsLecturerWindow(User user)
         {
             InitializeComponent();
 
@@ -32,18 +33,15 @@ namespace TestApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            List<Course> studentCourses = user.StudentAssignments.Select(sa => sa.Course).ToList();
-            List<Module> studentModules = studentCourses.SelectMany(sc => sc.ModuleCourses.Select(mc => mc.Module)).ToList();
+            List<Module> lecturerModules = db.LecturerAssignments.Where(la => la.Username.Equals(user.Username)).Select(la => la.Module).ToList();
 
             cmbModule.Items.Clear();
-            foreach (var module in studentModules)
+            foreach (var module in lecturerModules)
             {
                 cmbModule.Items.Add(module);
             }
 
-            cmbModule.SelectedIndex = 1;
-
+            cmbModule.SelectedIndex = 0;
         }
 
         private void CmbModule_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,7 +52,7 @@ namespace TestApp
         private void DisplayTests()
         {
             stckMain.Children.Clear();
-            List<Test> tests = ((Module)cmbModule.SelectedItem).Tests.OrderBy(t=>t.DueDate).ToList();
+            List<Test> tests = ((Module)cmbModule.SelectedItem).Tests.Where(t => t.Username.Equals(user.Username)).OrderBy(t => t.DueDate).ToList();
             if (tests.Any())
             {
                 foreach (Test test in tests)
@@ -93,29 +91,37 @@ namespace TestApp
                     lblDueDate.Text = test.DueDate.ToShortDateString();
                     lblDueDate.Margin = new Thickness(23, 80, 29, 40);
 
-                    Button btnAction = new Button();
-                    btnAction.Margin = new Thickness(612, 20, 10, 0);
-                    btnAction.Height = 34;
-                    bool takenTest = db.Results.Any(r => r.TestID == test.TestID && r.Username.Equals(user.Username));
-                    if (takenTest)
-                    {
-                        btnAction.Style = (Style)System.Windows.Application.Current.Resources["FlatButton"];
-                        btnAction.Content = "View Result";
-                        btnAction.Name = "btn"+test.TestID;
-                        btnAction.Click += BtnViewResult_Click;
-                    }
-                    else
-                    {
-                        btnAction.Style = (Style)System.Windows.Application.Current.Resources["DarkButton"];
-                        btnAction.Content = "Take Test";
-                        btnAction.Name = "btn" + test.TestID;
-                        btnAction.Click += BtnTakeTest_Click;
-                    }
+                    Button btnViewTest = new Button();
+                    btnViewTest.Margin = new Thickness(615, 20, 29, 0);
+                    btnViewTest.Height = 34;
+                    btnViewTest.Style = (Style)System.Windows.Application.Current.Resources["DarkButton"];
+                    btnViewTest.Content = "View Test";
+                    btnViewTest.Name = "btnView_" + test.TestID;
+                    btnViewTest.Click += btnViewTest_Click;
+                    btnViewTest.Padding = new Thickness(8, 8, 8, 8);
+
+                    PackIcon icnEdit = new PackIcon();
+                    icnEdit.Margin = new Thickness(652, 20, 62, 0);
+                    icnEdit.Height = 40;
+                    icnEdit.Name = "icnEdit_" + test.TestID;
+                    icnEdit.MouseUp += icnEdit_Click;
+                    icnEdit.Kind = PackIconKind.Edit;
+                    icnEdit.Cursor = Cursors.Hand;
+
+                    PackIcon icnDelete = new PackIcon();
+                    icnDelete.Margin = new Thickness(685, 20, 29, 0);
+                    icnDelete.Height = 40;
+                    icnDelete.Name = "icnDelete_" + test.TestID;
+                    icnDelete.MouseUp += icnDelete_Click;
+                    icnDelete.Kind = PackIconKind.Delete;
+                    icnDelete.Cursor = Cursors.Hand;
 
                     grid.Children.Add(lblTestTitle);
                     grid.Children.Add(lblModule);
                     grid.Children.Add(lblDueDate);
-                    grid.Children.Add(btnAction);
+                    grid.Children.Add(btnViewTest);
+                    grid.Children.Add(icnEdit);
+                    grid.Children.Add(icnDelete);
 
                     card.Content = grid;
                     stckMain.Children.Add(card);
@@ -146,17 +152,39 @@ namespace TestApp
             }
         }
 
-        private void BtnTakeTest_Click(object sender, RoutedEventArgs e)
+        private void icnDelete_Click(object sender, MouseButtonEventArgs e)
         {
-            int testID = Convert.ToInt16(((Button)sender).Name.Substring(3));
-            new TakeTestWindow(user, db.Tests.First(t => t.TestID == testID)).Show();
-            this.Hide();
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this test?",
+                                    "Delete Test",
+                                    System.Windows.MessageBoxButton.YesNo);
+            if (confirmResult == System.Windows.MessageBoxResult.No) return;
+
+            int testID = Convert.ToInt32(((PackIcon)sender).Name.Substring(10));
+
+            Test test = db.Tests.First(t => t.TestID == testID);
+
+            test.Answers.ToList().ForEach(a => db.Entry(a).State = EntityState.Deleted);
+            test.Questions.ToList().ForEach(q => db.Entry(q).State = EntityState.Deleted);
+
+            db.Tests.Remove(test);
+            db.SaveChanges();
+
+            DisplayTests();
+
         }
 
-        private void BtnViewResult_Click(object sender, RoutedEventArgs e)
+        private void icnEdit_Click(object sender, MouseButtonEventArgs e)
         {
-            int testID = Convert.ToInt16(((Button)sender).Name.Substring(3));
-            new ViewMemoWindow(user, db.Tests.First(t=>t.TestID==testID)).Show();
+            int testID = Convert.ToInt32(((PackIcon)sender).Name.Substring(8));
+            new EditTestWindow(user, db.Tests.First(t => t.TestID == testID)).Show();
+            this.Hide();
+
+        }
+
+        private void btnViewTest_Click(object sender, RoutedEventArgs e)
+        {
+            int testID = Convert.ToInt32(((Button)sender).Name.Substring(8));
+            new ViewTestLecturerWindow(db.Tests.Single(t => t.TestID == testID), user).Show();
             this.Hide();
         }
 

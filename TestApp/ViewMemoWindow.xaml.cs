@@ -23,6 +23,7 @@ namespace TestApp
         TestAppEntities db = new TestAppEntities();
 
         User student;
+        User lecturer;
         Test test;
 
         public ViewMemoWindow(User user, Test test)
@@ -33,6 +34,16 @@ namespace TestApp
             this.test = test;
         }
 
+        public ViewMemoWindow(User lecturer, User student, Test test)
+        {
+            InitializeComponent();
+
+            this.student = student;
+            this.lecturer = lecturer;
+            this.test = test;
+        }
+
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             List<Answer> answers = db.Answers.Where(a => a.Username.Equals(student.Username) && a.TestID == test.TestID).ToList();
@@ -40,6 +51,11 @@ namespace TestApp
             answers = answers.Where(a => a.AttemptNumber == latestAttempt).ToList();
             Result result = db.Results.First(r=> r.TestID==test.TestID && r.Username.Equals(student.Username) && r.AttemptNumber==latestAttempt);
             int questionNumber = 1;
+
+            if (lecturer != null)
+            {
+               lblHeader.Text = result.User.FirstName+" "+result.User.Surname;
+            }
 
             lblResult.Text = "Result: " + result.UserResult + "/" + test.Questions.Count + " - " + result.ResultPercentage + "%";
             lblTestTitle.Text = test.Title;
@@ -168,7 +184,14 @@ namespace TestApp
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
-            new MainWindow(student).Show();
+            if (lecturer == null)
+            {
+                new MainWindow(student).Show();
+            }
+            else
+            {
+                new MainWindow(lecturer).Show();
+            }
             this.Hide();
         }
 
@@ -180,7 +203,14 @@ namespace TestApp
 
         private void BtnTests_Click(object sender, RoutedEventArgs e)
         {
-            new ViewTestsWindow(student).Show();
+            if (lecturer == null)
+            {
+                new ViewTestsStudentWindow(student).Show();
+            }
+            else
+            {
+                new ViewTestsLecturerWindow(lecturer).Show();
+            }
             this.Hide();
         }
 
