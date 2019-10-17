@@ -52,7 +52,7 @@ namespace TestApp
                 cmbModule.Items.Add(module);
             }
             txtTestTitle.Text = test.Title;
-            cmbModule.SelectedItem = test.Module;
+            cmbModule.SelectedIndex = lecturerModules.FindIndex(lm=>lm.ModuleID == test.Module.ModuleID);
             dtpDueDate.SelectedDate = test.DueDate;
 
             UpdateQuestionDisplay();
