@@ -105,6 +105,9 @@
     <Compile Include="LecturerAssignment.cs">
       <DependentUpon>TestAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewMemoLecturerWindow.xaml.cs">
+      <DependentUpon>ViewMemoLecturerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditTestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewMemoLecturerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

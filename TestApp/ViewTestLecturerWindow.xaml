@@ -21,7 +21,7 @@
             <Button x:Name="btnLogout" Style="{StaticResource FlatButton}" Content="Log Out" HorizontalAlignment="Right" Width="150" Margin="0,0,0,0" Background="{StaticResource Transparent}" Foreground="White" Click="BtnLogout_Click" />
         </DockPanel>
         <TextBlock x:Name="txtTitle" VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="25,79,509,0" TextAlignment="Center"><Run Text="PROG Test 1"/></TextBlock>
-        <Button x:Name="btnViewMemo" VerticalAlignment="Top" Height="48" Style="{StaticResource DarkButton}" Width="Auto" Margin="673,79,31,0" Content="View Memo"></Button>
+        <Button x:Name="btnViewMemo" VerticalAlignment="Top" Height="48" Style="{StaticResource DarkButton}" Width="Auto" Margin="673,79,31,0" Content="View Memo" Click="btnViewMemo_Click"></Button>
 
         <DockPanel Margin="16,153,16,10">
             <Border BorderThickness="1" CornerRadius="5" BorderBrush="#FF6C6C6C">
@@ -31,7 +31,7 @@
                             <materialDesign:Card Margin="8,8,8,8" Background="{StaticResource PrimaryColorTransparent}" Height="611">
                                 <Grid Margin="8,8,8,8">
                                     <TextBlock VerticalAlignment="Top" FontSize="40" Height="Auto" Width="Auto" Margin="24,24,510,0" TextAlignment="Center"><Run Text="Results"/></TextBlock>
-                                    <ListView x:Name="lstResults" Margin="10,89,10,6">
+                                    <ListView x:Name="lstResults" Margin="10,89,10,10">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <Grid Margin="8,4,8,4">

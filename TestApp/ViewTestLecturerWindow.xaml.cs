@@ -31,14 +31,14 @@ namespace TestApp
             this.test = test;
             this.user = user;
 
-            lstResults.ItemsSource = test.Results.Select(r=> new ResultsViewModel()
+            lstResults.ItemsSource = test.Results.Select(r => new ResultsViewModel()
             {
                 User = r.User,
                 FirstName = r.User.FirstName,
                 Surname = r.User.Surname,
-                Result = (double) r.ResultPercentage,
+                Result = (double)r.ResultPercentage,
                 Test = r.Test
-            }).OrderBy(r=> r.FirstName);
+            }).OrderBy(r => r.FirstName);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -67,6 +67,12 @@ namespace TestApp
         {
             ResultsViewModel vm = (ResultsViewModel)((Button)sender).DataContext;
             new ViewMemoWindow(user, vm.User, vm.Test).Show();
+            this.Hide();
+        }
+
+        private void btnViewMemo_Click(object sender, RoutedEventArgs e)
+        {
+            new ViewMemoLecturerWindow(user, test).Show();
             this.Hide();
         }
     }
