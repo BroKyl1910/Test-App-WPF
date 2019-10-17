@@ -98,7 +98,7 @@ namespace TestApp
                     btnViewTest.Margin = new Thickness(615, 20, 29, 0);
                     btnViewTest.Height = 34;
                     btnViewTest.Style = (Style)System.Windows.Application.Current.Resources["DarkButton"];
-                    btnViewTest.Content = "View Test";
+                    btnViewTest.Content = "More";
                     btnViewTest.Name = "btnView_" + test.TestID;
                     btnViewTest.Click += btnViewTest_Click;
                     btnViewTest.Padding = new Thickness(8, 8, 8, 8);

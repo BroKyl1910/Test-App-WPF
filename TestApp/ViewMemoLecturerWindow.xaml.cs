@@ -79,27 +79,27 @@ namespace TestApp
 
                 RadioButton rdioA = new RadioButton();
                 rdioA.HorizontalAlignment = HorizontalAlignment.Left;
-
                 rdioA.VerticalAlignment = VerticalAlignment.Top;
                 rdioA.Foreground = (Brush)System.Windows.Application.Current.Resources["AccentGreyColor"];
                 rdioA.Content = "A.";
                 rdioA.Margin = new Thickness(32, 174, 0, 0);
+                rdioA.IsEnabled = false;
 
                 RadioButton rdioB = new RadioButton();
                 rdioB.HorizontalAlignment = HorizontalAlignment.Left;
-
                 rdioB.VerticalAlignment = VerticalAlignment.Top;
                 rdioB.Foreground = (Brush)System.Windows.Application.Current.Resources["AccentGreyColor"];
                 rdioB.Content = "B.";
                 rdioB.Margin = new Thickness(32, 222, 0, 0);
+                rdioB.IsEnabled = false;
 
                 RadioButton rdioC = new RadioButton();
                 rdioC.HorizontalAlignment = HorizontalAlignment.Left;
-
                 rdioC.VerticalAlignment = VerticalAlignment.Top;
                 rdioC.Foreground = (Brush)System.Windows.Application.Current.Resources["AccentGreyColor"];
                 rdioC.Content = "C.";
                 rdioC.Margin = new Thickness(32, 269, 0, 0);
+                rdioC.IsEnabled = false;
 
                 TextBlock lblA = new TextBlock();
                 lblA.HorizontalAlignment = HorizontalAlignment.Left;
