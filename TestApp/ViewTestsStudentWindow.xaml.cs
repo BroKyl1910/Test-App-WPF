@@ -59,66 +59,70 @@ namespace TestApp
             {
                 foreach (Test test in tests)
                 {
-                    Card card = new Card();
-                    card.Margin = new Thickness(8, 8, 8, 8);
-                    card.Background = (Brush)System.Windows.Application.Current.Resources["PrimaryColorTransparent"];
-
-                    Grid grid = new Grid();
-                    grid.Margin = new Thickness(8, 8, 8, 8);
-
-                    TextBlock lblTestTitle = new TextBlock();
-                    lblTestTitle.HorizontalAlignment = HorizontalAlignment.Left;
-                    lblTestTitle.FontSize = 28;
-                    lblTestTitle.Margin = new Thickness(23, 20, 0, 0);
-                    lblTestTitle.TextWrapping = TextWrapping.Wrap;
-                    lblTestTitle.Text = test.Title;
-                    lblTestTitle.VerticalAlignment = VerticalAlignment.Top;
-                    lblTestTitle.Foreground = (Brush)System.Windows.Application.Current.Resources["AccentGreyColor"];
-
-                    TextBlock lblModule = new TextBlock();
-                    lblModule.HorizontalAlignment = HorizontalAlignment.Left;
-                    lblModule.FontSize = 13;
-                    lblModule.TextWrapping = TextWrapping.Wrap;
-                    lblModule.VerticalAlignment = VerticalAlignment.Top;
-                    lblModule.Foreground = (Brush)System.Windows.Application.Current.Resources["AccentGreyColor"];
-                    lblModule.Text = test.Module.ToString();
-                    lblModule.Margin = new Thickness(23, 59, 29, 0);
-
-                    TextBlock lblDueDate = new TextBlock();
-                    lblDueDate.HorizontalAlignment = HorizontalAlignment.Left;
-                    lblDueDate.FontSize = 13;
-                    lblDueDate.TextWrapping = TextWrapping.Wrap;
-                    lblDueDate.VerticalAlignment = VerticalAlignment.Top;
-                    lblDueDate.Foreground = (Brush)System.Windows.Application.Current.Resources["AccentGreyColor"];
-                    lblDueDate.Text = test.DueDate.ToShortDateString();
-                    lblDueDate.Margin = new Thickness(23, 80, 29, 40);
-
-                    Button btnAction = new Button();
-                    btnAction.Margin = new Thickness(612, 20, 10, 0);
-                    btnAction.Height = 34;
                     bool takenTest = db.Results.Any(r => r.TestID == test.TestID && r.Username.Equals(user.Username));
-                    if (takenTest)
+                    if (test.Published == true || takenTest)
                     {
-                        btnAction.Style = (Style)System.Windows.Application.Current.Resources["FlatButton"];
-                        btnAction.Content = "View Result";
-                        btnAction.Name = "btn"+test.TestID;
-                        btnAction.Click += BtnViewResult_Click;
-                    }
-                    else
-                    {
-                        btnAction.Style = (Style)System.Windows.Application.Current.Resources["DarkButton"];
-                        btnAction.Content = "Take Test";
-                        btnAction.Name = "btn" + test.TestID;
-                        btnAction.Click += BtnTakeTest_Click;
-                    }
+                        Card card = new Card();
+                        card.Margin = new Thickness(8, 8, 8, 8);
+                        card.Background = (Brush)System.Windows.Application.Current.Resources["PrimaryColorTransparent"];
 
-                    grid.Children.Add(lblTestTitle);
-                    grid.Children.Add(lblModule);
-                    grid.Children.Add(lblDueDate);
-                    grid.Children.Add(btnAction);
+                        Grid grid = new Grid();
+                        grid.Margin = new Thickness(8, 8, 8, 8);
 
-                    card.Content = grid;
-                    stckMain.Children.Add(card);
+                        TextBlock lblTestTitle = new TextBlock();
+                        lblTestTitle.HorizontalAlignment = HorizontalAlignment.Left;
+                        lblTestTitle.FontSize = 28;
+                        lblTestTitle.Margin = new Thickness(23, 20, 0, 0);
+                        lblTestTitle.TextWrapping = TextWrapping.Wrap;
+                        lblTestTitle.Text = test.Title;
+                        lblTestTitle.VerticalAlignment = VerticalAlignment.Top;
+                        lblTestTitle.Foreground = (Brush)System.Windows.Application.Current.Resources["AccentGreyColor"];
+
+                        TextBlock lblModule = new TextBlock();
+                        lblModule.HorizontalAlignment = HorizontalAlignment.Left;
+                        lblModule.FontSize = 13;
+                        lblModule.TextWrapping = TextWrapping.Wrap;
+                        lblModule.VerticalAlignment = VerticalAlignment.Top;
+                        lblModule.Foreground = (Brush)System.Windows.Application.Current.Resources["AccentGreyColor"];
+                        lblModule.Text = test.Module.ToString();
+                        lblModule.Margin = new Thickness(23, 59, 29, 0);
+
+                        TextBlock lblDueDate = new TextBlock();
+                        lblDueDate.HorizontalAlignment = HorizontalAlignment.Left;
+                        lblDueDate.FontSize = 13;
+                        lblDueDate.TextWrapping = TextWrapping.Wrap;
+                        lblDueDate.VerticalAlignment = VerticalAlignment.Top;
+                        lblDueDate.Foreground = (Brush)System.Windows.Application.Current.Resources["AccentGreyColor"];
+                        lblDueDate.Text = test.DueDate.ToShortDateString();
+                        lblDueDate.Margin = new Thickness(23, 80, 29, 40);
+
+                        Button btnAction = new Button();
+                        btnAction.Margin = new Thickness(612, 20, 10, 0);
+                        btnAction.Height = 34;
+
+                        if (takenTest)
+                        {
+                            btnAction.Style = (Style)System.Windows.Application.Current.Resources["FlatButton"];
+                            btnAction.Content = "View Result";
+                            btnAction.Name = "btn" + test.TestID;
+                            btnAction.Click += BtnViewResult_Click;
+                        }
+                        else
+                        {
+                            btnAction.Style = (Style)System.Windows.Application.Current.Resources["DarkButton"];
+                            btnAction.Content = "Take Test";
+                            btnAction.Name = "btn" + test.TestID;
+                            btnAction.Click += BtnTakeTest_Click;
+                        }
+
+                        grid.Children.Add(lblTestTitle);
+                        grid.Children.Add(lblModule);
+                        grid.Children.Add(lblDueDate);
+                        grid.Children.Add(btnAction);
+
+                        card.Content = grid;
+                        stckMain.Children.Add(card);
+                    }
                 }
             }
             else

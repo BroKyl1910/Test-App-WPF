@@ -247,6 +247,7 @@ namespace TestApp
                 test.ModuleID = ((Module)cmbModule.SelectedItem).ModuleID;
                 test.DueDate = (DateTime)dtpDueDate.SelectedDate;
                 test.Title = txtTestTitle.Text;
+                test.Published = true;
                 db.Tests.Add(test);
 
                 db.SaveChanges();

@@ -247,6 +247,8 @@ namespace TestApp
 
                 }
 
+                dbTest.Published = true;
+
                 try
                 {
                     db.SaveChanges();

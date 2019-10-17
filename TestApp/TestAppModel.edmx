@@ -87,6 +87,7 @@
           <Property Name="ModuleID" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DueDate" Type="datetime" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -444,6 +445,7 @@
           <NavigationProperty Name="Questions" Relationship="Self.FK__Question__TestID__4D94879B" FromRole="Test" ToRole="Question" />
           <NavigationProperty Name="Results" Relationship="Self.FK__Result__TestID__5535A963" FromRole="Test" ToRole="Result" />
           <NavigationProperty Name="User" Relationship="Self.FK__Test__Username__49C3F6B7" FromRole="Test" ToRole="User" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -787,6 +789,7 @@
           <EntitySetMapping Name="Tests">
             <EntityTypeMapping TypeName="TestAppModel.Test">
               <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="Published" ColumnName="Published" />
                 <ScalarProperty Name="TestID" ColumnName="TestID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />

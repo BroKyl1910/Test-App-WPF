@@ -27,6 +27,7 @@ namespace TestApp
         public string ModuleID { get; set; }
         public string Title { get; set; }
         public System.DateTime DueDate { get; set; }
+        public bool Published { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }
@@ -36,7 +37,5 @@ namespace TestApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
         public virtual User User { get; set; }
-
-
     }
 }

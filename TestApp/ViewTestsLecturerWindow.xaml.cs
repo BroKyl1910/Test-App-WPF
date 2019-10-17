@@ -108,20 +108,25 @@ namespace TestApp
                     icnEdit.Kind = PackIconKind.Edit;
                     icnEdit.Cursor = Cursors.Hand;
 
-                    PackIcon icnDelete = new PackIcon();
-                    icnDelete.Margin = new Thickness(685, 20, 29, 0);
-                    icnDelete.Height = 40;
-                    icnDelete.Name = "icnDelete_" + test.TestID;
-                    icnDelete.MouseUp += icnDelete_Click;
-                    icnDelete.Kind = PackIconKind.Delete;
-                    icnDelete.Cursor = Cursors.Hand;
+                    if (test.Published == true)
+                    {
+                        PackIcon icnDelete = new PackIcon();
+                        icnDelete.Margin = new Thickness(685, 20, 29, 0);
+                        icnDelete.Height = 40;
+                        icnDelete.Name = "icnDelete_" + test.TestID;
+                        icnDelete.MouseUp += icnDelete_Click;
+                        icnDelete.Kind = PackIconKind.Delete;
+                        icnDelete.Cursor = Cursors.Hand;
+                        grid.Children.Add(icnDelete);
+
+                    }
+
 
                     grid.Children.Add(lblTestTitle);
                     grid.Children.Add(lblModule);
                     grid.Children.Add(lblDueDate);
                     grid.Children.Add(btnViewTest);
                     grid.Children.Add(icnEdit);
-                    grid.Children.Add(icnDelete);
 
                     card.Content = grid;
                     stckMain.Children.Add(card);
@@ -154,19 +159,16 @@ namespace TestApp
 
         private void icnDelete_Click(object sender, MouseButtonEventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure you want to delete this test?",
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this test? Deleting this test will simply unpublish it. Unpublished tests can be republished by editing and then saving them.",
                                     "Delete Test",
                                     System.Windows.MessageBoxButton.YesNo);
             if (confirmResult == System.Windows.MessageBoxResult.No) return;
 
             int testID = Convert.ToInt32(((PackIcon)sender).Name.Substring(10));
 
-            Test test = db.Tests.First(t => t.TestID == testID);
+            Test test = db.Tests.Single(t => t.TestID == testID);
 
-            test.Answers.ToList().ForEach(a => db.Entry(a).State = EntityState.Deleted);
-            test.Questions.ToList().ForEach(q => db.Entry(q).State = EntityState.Deleted);
-
-            db.Tests.Remove(test);
+            test.Published = false;
             db.SaveChanges();
 
             DisplayTests();

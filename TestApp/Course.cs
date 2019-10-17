@@ -31,7 +31,7 @@ namespace TestApp
 
         public override string ToString()
         {
-            return CourseID+" - "+CourseName;
+            return CourseID + " - " + CourseName;
         }
     }
 }
