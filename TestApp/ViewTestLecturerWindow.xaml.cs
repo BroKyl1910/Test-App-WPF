@@ -75,5 +75,11 @@ namespace TestApp
             new ViewMemoLecturerWindow(user, test).Show();
             this.Hide();
         }
+
+        private void btnTests_Click(object sender, RoutedEventArgs e)
+        {
+            new ViewTestsLecturerWindow(user).Show();
+            this.Hide();
+        }
     }
 }

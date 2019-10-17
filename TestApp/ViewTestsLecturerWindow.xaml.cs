@@ -204,5 +204,17 @@ namespace TestApp
         {
             System.Windows.Application.Current.Shutdown();
         }
+
+        private void btnNewTest_Click(object sender, RoutedEventArgs e)
+        {
+            new CreateTestWindow(user).Show();
+            this.Hide();
+        }
+
+        private void btnTests_Click(object sender, RoutedEventArgs e)
+        {
+            new ViewTestsLecturerWindow(user).Show();
+            this.Hide();
+        }
     }
 }

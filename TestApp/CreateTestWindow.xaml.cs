@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
- 
+
 namespace TestApp
 {
     /// <summary>
@@ -46,7 +46,7 @@ namespace TestApp
 
             //Add modules to combobox
             cmbModule.Items.Clear();
-            foreach(Module module in lecturerModules)
+            foreach (Module module in lecturerModules)
             {
                 cmbModule.Items.Add(module);
             }
@@ -61,27 +61,34 @@ namespace TestApp
         {
             if (ValidateQuestionForm())
             {
-                Question question = new Question();
-                question.TestID = test.TestID;
-                question.QuestionText = txtQuestion.Text;
-                question.Answer1 = txtA.Text;
-                question.Answer2 = txtB.Text;
-                question.Answer3 = txtC.Text;
-                question.CorrectAnswer = Array.FindIndex(answerRadioButtons, r => r.IsChecked == true);
-
-                if (questionIndex == questions.Count)
-                {
-                    //new question
-                    questions.Add(question);
-                }
-                else
-                {
-                    //update existing
-                    questions[questionIndex] = question;
-                }
-
-                UpdateNextPrevButtons();
+                SaveCurrentQuestion();
             }
+        }
+
+        private void SaveCurrentQuestion()
+        {
+
+            Question question = new Question();
+            question.TestID = test.TestID;
+            question.QuestionText = txtQuestion.Text;
+            question.Answer1 = txtA.Text;
+            question.Answer2 = txtB.Text;
+            question.Answer3 = txtC.Text;
+            question.CorrectAnswer = Array.FindIndex(answerRadioButtons, r => r.IsChecked == true);
+
+            if (questionIndex == questions.Count)
+            {
+                //new question
+                questions.Add(question);
+            }
+            else
+            {
+                //update existing
+                questions[questionIndex] = question;
+            }
+
+            UpdateNextPrevButtons();
+
         }
 
         private void UpdateNextPrevButtons()
@@ -121,8 +128,8 @@ namespace TestApp
 
         private void UpdateQuestionDisplay()
         {
-            System.Diagnostics.Trace.WriteLine("Question Index: " +questionIndex);
-            System.Diagnostics.Trace.WriteLine("Length of Questions: " +questions.Count);
+            System.Diagnostics.Trace.WriteLine("Question Index: " + questionIndex);
+            System.Diagnostics.Trace.WriteLine("Length of Questions: " + questions.Count);
             lblQuestionNumber.Text = "Question " + (questionIndex + 1);
             if (questionIndex == questions.Count)
             {
@@ -172,7 +179,7 @@ namespace TestApp
 
         private bool AllQuestionFieldsFilled()
         {
-            return !(txtQuestion.Text.Equals("") || txtA.Text.Equals("") || txtB.Text.Equals("") || txtC.Text.Equals("") || Array.FindIndex(answerRadioButtons, r=> r.IsChecked==true) == -1);
+            return !(txtQuestion.Text.Equals("") || txtA.Text.Equals("") || txtB.Text.Equals("") || txtC.Text.Equals("") || Array.FindIndex(answerRadioButtons, r => r.IsChecked == true) == -1);
         }
         private bool ValidateTestForm()
         {
@@ -198,13 +205,13 @@ namespace TestApp
 
         private bool AllTestFieldsFilled()
         {
-            return !(txtTestTitle.Text.Equals("") || dtpDueDate.SelectedDate == null || cmbModule.SelectedIndex==-1);
+            return !(txtTestTitle.Text.Equals("") || dtpDueDate.SelectedDate == null || cmbModule.SelectedIndex == -1);
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             //Ensure user can't be left in a situation where they have no questions
-            if(questions.Count <= 1 && questionIndex==0)
+            if (questions.Count <= 1 && questionIndex == 0)
             {
                 crdError.Visibility = Visibility.Visible;
                 lblError.Text = "Test must have at least one question";
@@ -232,17 +239,19 @@ namespace TestApp
 
         private void BtnSaveTest_Click(object sender, RoutedEventArgs e)
         {
-            if(ValidateQuestionForm() && ValidateTestForm())
+            if (ValidateQuestionForm() && ValidateTestForm())
             {
+                SaveCurrentQuestion();
+
                 test.Username = lecturer.Username;
                 test.ModuleID = ((Module)cmbModule.SelectedItem).ModuleID;
-                test.DueDate = (DateTime) dtpDueDate.SelectedDate;
+                test.DueDate = (DateTime)dtpDueDate.SelectedDate;
                 test.Title = txtTestTitle.Text;
                 db.Tests.Add(test);
 
                 db.SaveChanges();
 
-                foreach(Question q in questions)
+                foreach (Question q in questions)
                 {
                     q.TestID = test.TestID;
                     test.Questions.Add(q);
@@ -276,6 +285,12 @@ namespace TestApp
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             new MainWindow(lecturer).Show();
+            this.Hide();
+        }
+
+        private void btnTests_Click(object sender, RoutedEventArgs e)
+        {
+            new ViewTestsLecturerWindow(lecturer).Show();
             this.Hide();
         }
     }

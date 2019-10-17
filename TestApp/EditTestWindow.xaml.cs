@@ -52,7 +52,7 @@ namespace TestApp
                 cmbModule.Items.Add(module);
             }
             txtTestTitle.Text = test.Title;
-            cmbModule.SelectedIndex = lecturerModules.FindIndex(lm=>lm.ModuleID == test.Module.ModuleID);
+            cmbModule.SelectedIndex = lecturerModules.FindIndex(lm => lm.ModuleID == test.Module.ModuleID);
             dtpDueDate.SelectedDate = test.DueDate;
 
             UpdateQuestionDisplay();
@@ -105,7 +105,7 @@ namespace TestApp
                 btnPrev.IsEnabled = false;
                 btnNext.IsEnabled = true;
             }
-            else if (questionIndex == questions.Count-1)
+            else if (questionIndex == questions.Count - 1)
             {
                 btnPrev.IsEnabled = true;
                 btnNext.IsEnabled = false;
@@ -175,14 +175,19 @@ namespace TestApp
         {
             if (ValidateQuestionForm())
             {
-                questions[questionIndex].QuestionText = txtQuestion.Text;
-                questions[questionIndex].Answer1 = txtA.Text;
-                questions[questionIndex].Answer2 = txtB.Text;
-                questions[questionIndex].Answer3 = txtC.Text;
-                questions[questionIndex].CorrectAnswer = Array.FindIndex(answerRadioButtons, r => r.IsChecked == true);
-
-                UpdateNextPrevButtons();
+                SaveCurrentQuestion();
             }
+        }
+
+        private void SaveCurrentQuestion()
+        {
+            questions[questionIndex].QuestionText = txtQuestion.Text;
+            questions[questionIndex].Answer1 = txtA.Text;
+            questions[questionIndex].Answer2 = txtB.Text;
+            questions[questionIndex].Answer3 = txtC.Text;
+            questions[questionIndex].CorrectAnswer = Array.FindIndex(answerRadioButtons, r => r.IsChecked == true);
+
+            UpdateNextPrevButtons();
         }
 
         private bool ValidateQuestionForm()
@@ -222,22 +227,18 @@ namespace TestApp
         {
             if (ValidateQuestionForm() && ValidateTestForm())
             {
+                SaveCurrentQuestion();
+
                 Test dbTest = db.Tests.Single(t => t.TestID == test.TestID);
                 dbTest.ModuleID = ((Module)cmbModule.SelectedItem).ModuleID;
                 dbTest.DueDate = (DateTime)dtpDueDate.SelectedDate;
                 dbTest.Title = txtTestTitle.Text;
 
-                //Remove all answers that contain this test's questions
-                //var answersToDelete = db.Answers.Where(a => a.Test.TestID == test.TestID).ToList();
-                //foreach (Answer answer in answersToDelete)
-                //{
-                //    db.Answers.Remove(answer);
-                //}
                 db.SaveChanges();
-                
+
                 foreach (Question q in questions)
                 {
-                    Question dbQuestion = db.Questions.Single(dbQ=> dbQ.QuestionID==q.QuestionID);
+                    Question dbQuestion = db.Questions.Single(dbQ => dbQ.QuestionID == q.QuestionID);
                     dbQuestion.QuestionText = q.QuestionText;
                     dbQuestion.Answer1 = q.Answer1;
                     dbQuestion.Answer2 = q.Answer2;
@@ -246,29 +247,13 @@ namespace TestApp
 
                 }
 
-               
-
-                //dbTest.Questions = questions;
-
-                //questions.ForEach(q => q.TestID = newTest.TestID);
-
-
-                ////Remove questions
-                //questions.ForEach(q => db.Questions.RemoveRange(db.Questions.Where(qu=> q.QuestionID!= -1 && qu.QuestionID==q.QuestionID)));
-
-                ////Add 
-                //questions.ForEach(q => db.Questions.Add(q));
-                //db.SaveChanges();
-
-                ////Repopulate test's questions
-
                 try
                 {
                     db.SaveChanges();
-                     
+
                     MessageBox.Show("Saved");
 
-                    new MainWindow(lecturer).Show();
+                    new ViewTestsLecturerWindow(lecturer).Show();
                     this.Hide();
                 }
                 catch (Exception ex)
