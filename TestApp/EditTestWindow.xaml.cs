@@ -105,7 +105,7 @@ namespace TestApp
                 btnPrev.IsEnabled = false;
                 btnNext.IsEnabled = true;
             }
-            else if (questionIndex == questions.Count)
+            else if (questionIndex == questions.Count-1)
             {
                 btnPrev.IsEnabled = true;
                 btnNext.IsEnabled = false;
@@ -175,23 +175,11 @@ namespace TestApp
         {
             if (ValidateQuestionForm())
             {
-                Question question = new Question();
-                question.QuestionText = txtQuestion.Text;
-                question.Answer1 = txtA.Text;
-                question.Answer2 = txtB.Text;
-                question.Answer3 = txtC.Text;
-                question.CorrectAnswer = Array.FindIndex(answerRadioButtons, r => r.IsChecked == true);
-
-                if (questionIndex == questions.Count)
-                {
-                    //new question
-                    questions.Add(question);
-                }
-                else
-                {
-                    //update existing
-                    questions[questionIndex] = question;
-                }
+                questions[questionIndex].QuestionText = txtQuestion.Text;
+                questions[questionIndex].Answer1 = txtA.Text;
+                questions[questionIndex].Answer2 = txtB.Text;
+                questions[questionIndex].Answer3 = txtC.Text;
+                questions[questionIndex].CorrectAnswer = Array.FindIndex(answerRadioButtons, r => r.IsChecked == true);
 
                 UpdateNextPrevButtons();
             }
@@ -246,14 +234,19 @@ namespace TestApp
                 //    db.Answers.Remove(answer);
                 //}
                 db.SaveChanges();
-                dbTest.Questions.Clear();
+                
                 foreach (Question q in questions)
                 {
-                    q.TestID = dbTest.TestID;
-                    //q.Test = dbTest;
-                    dbTest.Questions.Add(q);
+                    Question dbQuestion = db.Questions.Single(dbQ=> dbQ.QuestionID==q.QuestionID);
+                    dbQuestion.QuestionText = q.QuestionText;
+                    dbQuestion.Answer1 = q.Answer1;
+                    dbQuestion.Answer2 = q.Answer2;
+                    dbQuestion.Answer3 = q.Answer3;
+                    dbQuestion.CorrectAnswer = q.CorrectAnswer;
 
                 }
+
+               
 
                 //dbTest.Questions = questions;
 
@@ -272,7 +265,7 @@ namespace TestApp
                 try
                 {
                     db.SaveChanges();
-
+                     
                     MessageBox.Show("Saved");
 
                     new MainWindow(lecturer).Show();
