@@ -31,7 +31,7 @@ namespace TestApp
         public EditTestWindow(User lecturer, Test test)
         {
             InitializeComponent();
-            //this.lecturer = lecturer;
+
             this.lecturer = lecturer;
             this.test = test;
         }
@@ -52,6 +52,7 @@ namespace TestApp
                 cmbModule.Items.Add(module);
             }
             txtTestTitle.Text = test.Title;
+            //Auto-select module
             cmbModule.SelectedIndex = lecturerModules.FindIndex(lm => lm.ModuleID == test.Module.ModuleID);
             dtpDueDate.SelectedDate = test.DueDate;
 
@@ -181,6 +182,7 @@ namespace TestApp
 
         private void SaveCurrentQuestion()
         {
+            // Overwrite question with new data
             questions[questionIndex].QuestionText = txtQuestion.Text;
             questions[questionIndex].Answer1 = txtA.Text;
             questions[questionIndex].Answer2 = txtB.Text;
@@ -229,7 +231,9 @@ namespace TestApp
             {
                 SaveCurrentQuestion();
 
+                //Get saved test
                 Test dbTest = db.Tests.Single(t => t.TestID == test.TestID);
+                //Edit saved test
                 dbTest.ModuleID = ((Module)cmbModule.SelectedItem).ModuleID;
                 dbTest.DueDate = (DateTime)dtpDueDate.SelectedDate;
                 dbTest.Title = txtTestTitle.Text;
@@ -238,7 +242,9 @@ namespace TestApp
 
                 foreach (Question q in questions)
                 {
+                    // Get saved question with same ID
                     Question dbQuestion = db.Questions.Single(dbQ => dbQ.QuestionID == q.QuestionID);
+                    //Edit saved question
                     dbQuestion.QuestionText = q.QuestionText;
                     dbQuestion.Answer1 = q.Answer1;
                     dbQuestion.Answer2 = q.Answer2;
@@ -247,6 +253,7 @@ namespace TestApp
 
                 }
 
+                //Ensure test is published if it was unpublished
                 dbTest.Published = true;
 
                 try

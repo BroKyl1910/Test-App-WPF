@@ -32,8 +32,10 @@ namespace TestApp
         {
             InitializeComponent();
 
+            // Set up test data from db
             this.test = test;
             questions = test.Questions.ToList();
+            // Set all answers to -1 so I know which ones have been answered
             answerIndices = questions.Select(q => -1).ToArray();
             this.user = user;
         }
@@ -57,12 +59,14 @@ namespace TestApp
             UpdateNextPrevButtons();
         }
 
+        // Disable navigation between questions until current answer is saved
         private void AnswerSelection_Checked(object sender, RoutedEventArgs e)
         {
             btnNext.IsEnabled = false;
             btnPrev.IsEnabled = false;
         }
 
+        //Enable or disable prev/next according to where the user is with regards to questions in the list
         private void UpdateNextPrevButtons()
         {
             if (questionIndex == 0)
@@ -134,16 +138,19 @@ namespace TestApp
 
         private void BtnSaveTest_Click(object sender, RoutedEventArgs e)
         {
+            // Check that none of the questions are unanswered
             if(answerIndices.Any(i => i == -1))
             {
                 crdError.Visibility = Visibility.Visible;
                 lblError.Text = "Please complete all questions";
+                //Navigate to first unanswered question
                 questionIndex = Array.FindIndex(answerIndices, i => i == -1);
                 UpdateQuestionDisplay();
                 UpdateNextPrevButtons();
             }
             else
             {
+                //Save answers
                 List<Answer> answers = new List<Answer>();
 
                 int attemptNumber = db.Results.Count(r => r.TestID == test.TestID && r.Username.Equals(user.Username))+1;
@@ -163,6 +170,7 @@ namespace TestApp
 
                 db.SaveChanges();
 
+                // Calculate and save result
                 int numCorrect = db.Answers.Count(a => a.TestID == test.TestID && a.Username.Equals(user.Username) && a.AttemptNumber == attemptNumber && a.Correct);
 
                 Result result = new Result();

@@ -31,6 +31,7 @@ namespace TestApp
             this.test = test;
             this.user = user;
 
+            // Display list of results in bound listview. ViewModel used so I can get specific data from the database objects to display
             lstResults.ItemsSource = test.Results.Select(r => new ResultsViewModel()
             {
                 User = r.User,
@@ -39,11 +40,6 @@ namespace TestApp
                 Result = (double)r.ResultPercentage,
                 Test = r.Test
             }).OrderBy(r => r.FirstName);
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)
@@ -65,6 +61,7 @@ namespace TestApp
 
         private void BtnViewStudentTest_Click(object sender, RoutedEventArgs e)
         {
+            // Show selected learners test
             ResultsViewModel vm = (ResultsViewModel)((Button)sender).DataContext;
             new ViewMemoWindow(user, vm.User, vm.Test).Show();
             this.Hide();

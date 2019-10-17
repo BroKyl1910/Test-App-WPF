@@ -32,17 +32,18 @@ namespace TestApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            //Get list of modules the student does
             List<Course> studentCourses = user.StudentAssignments.Select(sa => sa.Course).ToList();
             List<Module> studentModules = studentCourses.SelectMany(sc => sc.ModuleCourses.Select(mc => mc.Module)).ToList();
 
+            //Populate combobox with modules and select first one
             cmbModule.Items.Clear();
             foreach (var module in studentModules)
             {
                 cmbModule.Items.Add(module);
             }
 
-            cmbModule.SelectedIndex = 1;
+            cmbModule.SelectedIndex = 0;
 
         }
 
@@ -54,11 +55,13 @@ namespace TestApp
         private void DisplayTests()
         {
             stckMain.Children.Clear();
+            //Display all tests for selected module
             List<Test> tests = ((Module)cmbModule.SelectedItem).Tests.OrderBy(t=>t.DueDate).ToList();
             if (tests.Any())
             {
                 foreach (Test test in tests)
                 {
+                    //Only show test if it is published or if the student has already completed it
                     bool takenTest = db.Results.Any(r => r.TestID == test.TestID && r.Username.Equals(user.Username));
                     if (test.Published == true || takenTest)
                     {

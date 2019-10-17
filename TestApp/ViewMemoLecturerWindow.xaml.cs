@@ -18,6 +18,8 @@ namespace TestApp
     /// <summary>
     /// Interaction logic for LecturerViewMemoWindow.xaml
     /// </summary>
+    
+    // Use of a separate window is justified here in my opinion as there is quite a few different things shown on this window compared to the other memo window
     public partial class ViewMemoLecturerWindow : Window
     {
         User lecturer;

@@ -46,12 +46,16 @@ namespace TestApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Get students answers for their latest attempt of the test
             List<Answer> answers = db.Answers.Where(a => a.Username.Equals(student.Username) && a.TestID == test.TestID).ToList();
             int latestAttempt = answers.Max(a => a.AttemptNumber);
             answers = answers.Where(a => a.AttemptNumber == latestAttempt).ToList();
+            
+            // Get learner's result
             Result result = db.Results.First(r=> r.TestID==test.TestID && r.Username.Equals(student.Username) && r.AttemptNumber==latestAttempt);
             int questionNumber = 1;
 
+            // Lecturer views same memo when viewing learner's test
             if (lecturer != null)
             {
                lblHeader.Text = result.User.FirstName+" "+result.User.Surname;

@@ -228,6 +228,7 @@ namespace TestApp
             }
             questions.RemoveAt(questionIndex);
 
+            //Make sure question being displayed exists
             if (questionIndex >= questions.Count)
             {
                 questionIndex = questions.Count - 1;
@@ -243,6 +244,7 @@ namespace TestApp
             {
                 SaveCurrentQuestion();
 
+                //Save test
                 test.Username = lecturer.Username;
                 test.ModuleID = ((Module)cmbModule.SelectedItem).ModuleID;
                 test.DueDate = (DateTime)dtpDueDate.SelectedDate;
@@ -252,6 +254,7 @@ namespace TestApp
 
                 db.SaveChanges();
 
+                //Add questions to test using testID
                 foreach (Question q in questions)
                 {
                     q.TestID = test.TestID;

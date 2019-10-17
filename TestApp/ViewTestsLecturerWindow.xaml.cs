@@ -33,8 +33,10 @@ namespace TestApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //Get modules the lecturer takes
             List<Module> lecturerModules = db.LecturerAssignments.Where(la => la.Username.Equals(user.Username)).Select(la => la.Module).ToList();
 
+            //Display modules in combobox and select first one
             cmbModule.Items.Clear();
             foreach (var module in lecturerModules)
             {
@@ -52,6 +54,7 @@ namespace TestApp
         private void DisplayTests()
         {
             stckMain.Children.Clear();
+            //Display tests made by current lecturer for chosen module, ordered by date
             List<Test> tests = ((Module)cmbModule.SelectedItem).Tests.Where(t => t.Username.Equals(user.Username)).OrderBy(t => t.DueDate).ToList();
             if (tests.Any())
             {
@@ -159,6 +162,7 @@ namespace TestApp
 
         private void icnDelete_Click(object sender, MouseButtonEventArgs e)
         {
+            //Deleting unpublishes or hides tests from students but all related data persists for integrity's sake
             var confirmResult = MessageBox.Show("Are you sure you want to delete this test? Deleting this test will simply unpublish it. Unpublished tests can be republished by editing and then saving them.",
                                     "Delete Test",
                                     System.Windows.MessageBoxButton.YesNo);
